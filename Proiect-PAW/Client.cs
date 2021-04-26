@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
-    public class Clienti
+    public class Client
     {
         #region Atribute
         public int Id { get; set; }
@@ -14,13 +14,13 @@ namespace Proiect_PAW
         public string Prenume { get; set; }
         public string Telefon { get; set; }
         public string DataNasterii { get; set; }
-        public List<Rezervari> Rezervari { get; set; }
+        public List<Rezervare> Rezervari { get; set; }
 
         #endregion
 
         #region Constructori
 
-        public Clienti(int id, string nume, string prenume, string telefon, string dataNasterii, List<Rezervari> rezervari)
+        public Client(int id, string nume, string prenume, string telefon, string dataNasterii, List<Rezervare> rezervari)
         {
             this.Id = id;
             Nume = nume;
@@ -30,7 +30,7 @@ namespace Proiect_PAW
             Rezervari = rezervari;
         }
 
-        public Clienti()
+        public Client()
         {
         }
         #endregion

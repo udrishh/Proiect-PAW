@@ -12,9 +12,16 @@ namespace Proiect_PAW
 {
     public partial class MainForm : Form
     {
+        private List<Aparat> aparate = new List<Aparat>();
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void btnAparate_Click(object sender, EventArgs e)
+        {
+            FormAparate formAparate = new FormAparate(aparate);
+            formAparate.ShowDialog();
         }
     }
 }

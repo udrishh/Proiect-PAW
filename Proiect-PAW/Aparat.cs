@@ -6,23 +6,33 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
-    public class Aparate
+    public class Aparat
     {
         #region Atribute
         public string Denumire { get; set; }
-
+        public int Id { get; set; }
         #endregion
 
         #region Constructori
 
-        public Aparate(string denumire)
+        public Aparat(string denumire, int id)
         {
             Denumire = denumire;
+            Id = id;
         }
 
-        public Aparate()
+        public Aparat()
         {
         }
+
+        #endregion
+
+        #region Metode
+        public override string ToString()
+        {
+            return Id + " - " + Denumire;
+        }
+
         #endregion
     }
 }
