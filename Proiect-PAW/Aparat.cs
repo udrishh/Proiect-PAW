@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
-    public class Aparat
+    public class Aparat : IComparable<Aparat>
     {
         #region Atribute
         public string Denumire { get; set; }
@@ -31,6 +31,11 @@ namespace Proiect_PAW
         public override string ToString()
         {
             return Id + " - " + Denumire;
+        }
+
+        public int CompareTo(Aparat other)
+        {
+            return this.Id.CompareTo(other.Id);
         }
 
         #endregion

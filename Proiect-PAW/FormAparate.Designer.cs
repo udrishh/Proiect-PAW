@@ -31,20 +31,20 @@ namespace Proiect_PAW
         {
             this.components = new System.ComponentModel.Container();
             this.lvAparate = new System.Windows.Forms.ListView();
-            this.btnAdaugaAparat = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbDenumire = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.denumire = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verificaDisponibilitateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAdaugaAparat = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbDenumire = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvAparate
@@ -62,6 +62,45 @@ namespace Proiect_PAW
             this.lvAparate.TabIndex = 0;
             this.lvAparate.UseCompatibleStateImageBehavior = false;
             this.lvAparate.View = System.Windows.Forms.View.Details;
+            // 
+            // id
+            // 
+            this.id.Text = "Id";
+            this.id.Width = 50;
+            // 
+            // denumire
+            // 
+            this.denumire.Text = "Denumire";
+            this.denumire.Width = 440;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem,
+            this.verificaDisponibilitateToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 92);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
+            // verificaDisponibilitateToolStripMenuItem
+            // 
+            this.verificaDisponibilitateToolStripMenuItem.Name = "verificaDisponibilitateToolStripMenuItem";
+            this.verificaDisponibilitateToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.verificaDisponibilitateToolStripMenuItem.Text = "Verifica Disponibilitate";
             // 
             // btnAdaugaAparat
             // 
@@ -91,6 +130,7 @@ namespace Proiect_PAW
             this.tbDenumire.Name = "tbDenumire";
             this.tbDenumire.Size = new System.Drawing.Size(176, 20);
             this.tbDenumire.TabIndex = 3;
+            this.tbDenumire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDenumire_KeyPress);
             // 
             // label1
             // 
@@ -101,47 +141,9 @@ namespace Proiect_PAW
             this.label1.TabIndex = 2;
             this.label1.Text = "Denumire";
             // 
-            // id
-            // 
-            this.id.Text = "Id";
-            this.id.Width = 50;
-            // 
-            // denumire
-            // 
-            this.denumire.Text = "Denumire";
-            this.denumire.Width = 440;
-            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editeazaToolStripMenuItem,
-            this.stergeToolStripMenuItem,
-            this.verificaDisponibilitateToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 92);
-            // 
-            // editeazaToolStripMenuItem
-            // 
-            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.editeazaToolStripMenuItem.Text = "Editeaza";
-            // 
-            // stergeToolStripMenuItem
-            // 
-            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.stergeToolStripMenuItem.Text = "Sterge";
-            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
-            // 
-            // verificaDisponibilitateToolStripMenuItem
-            // 
-            this.verificaDisponibilitateToolStripMenuItem.Name = "verificaDisponibilitateToolStripMenuItem";
-            this.verificaDisponibilitateToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.verificaDisponibilitateToolStripMenuItem.Text = "Verifica Disponibilitate";
             // 
             // FormAparate
             // 
@@ -152,10 +154,10 @@ namespace Proiect_PAW
             this.Controls.Add(this.lvAparate);
             this.Name = "FormAparate";
             this.Text = "Manager Aparate";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -33,6 +33,7 @@ namespace Proiect_PAW
             this.btnClienti = new System.Windows.Forms.Button();
             this.btnRezervari = new System.Windows.Forms.Button();
             this.btnAparate = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@ namespace Proiect_PAW
             this.btnClienti.Name = "btnClienti";
             this.btnClienti.Size = new System.Drawing.Size(157, 23);
             this.btnClienti.TabIndex = 0;
-            this.btnClienti.Text = "Clienti";
+            this.btnClienti.Text = "&Clienti";
             this.btnClienti.UseVisualStyleBackColor = true;
             // 
             // btnRezervari
@@ -63,7 +64,7 @@ namespace Proiect_PAW
             this.btnRezervari.Name = "btnRezervari";
             this.btnRezervari.Size = new System.Drawing.Size(157, 23);
             this.btnRezervari.TabIndex = 1;
-            this.btnRezervari.Text = "Rezervari";
+            this.btnRezervari.Text = "&Rezervari";
             this.btnRezervari.UseVisualStyleBackColor = true;
             // 
             // btnAparate
@@ -72,7 +73,7 @@ namespace Proiect_PAW
             this.btnAparate.Name = "btnAparate";
             this.btnAparate.Size = new System.Drawing.Size(157, 23);
             this.btnAparate.TabIndex = 2;
-            this.btnAparate.Text = "Aparate";
+            this.btnAparate.Text = "&Aparate";
             this.btnAparate.UseVisualStyleBackColor = true;
             this.btnAparate.Click += new System.EventHandler(this.btnAparate_Click);
             // 
@@ -84,6 +85,8 @@ namespace Proiect_PAW
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "Manager Sala de Gimnastica";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -95,6 +98,7 @@ namespace Proiect_PAW
         private System.Windows.Forms.Button btnAparate;
         private System.Windows.Forms.Button btnRezervari;
         private System.Windows.Forms.Button btnClienti;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
