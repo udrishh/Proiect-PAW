@@ -30,9 +30,9 @@ namespace Proiect_PAW
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnClienti = new System.Windows.Forms.Button();
-            this.btnRezervari = new System.Windows.Forms.Button();
             this.btnAparate = new System.Windows.Forms.Button();
+            this.btnRezervari = new System.Windows.Forms.Button();
+            this.btnClienti = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,14 +49,15 @@ namespace Proiect_PAW
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Manager de date";
             // 
-            // btnClienti
+            // btnAparate
             // 
-            this.btnClienti.Location = new System.Drawing.Point(18, 19);
-            this.btnClienti.Name = "btnClienti";
-            this.btnClienti.Size = new System.Drawing.Size(157, 23);
-            this.btnClienti.TabIndex = 0;
-            this.btnClienti.Text = "&Clienti";
-            this.btnClienti.UseVisualStyleBackColor = true;
+            this.btnAparate.Location = new System.Drawing.Point(18, 48);
+            this.btnAparate.Name = "btnAparate";
+            this.btnAparate.Size = new System.Drawing.Size(157, 23);
+            this.btnAparate.TabIndex = 2;
+            this.btnAparate.Text = "&Aparate";
+            this.btnAparate.UseVisualStyleBackColor = true;
+            this.btnAparate.Click += new System.EventHandler(this.btnAparate_Click);
             // 
             // btnRezervari
             // 
@@ -67,15 +68,15 @@ namespace Proiect_PAW
             this.btnRezervari.Text = "&Rezervari";
             this.btnRezervari.UseVisualStyleBackColor = true;
             // 
-            // btnAparate
+            // btnClienti
             // 
-            this.btnAparate.Location = new System.Drawing.Point(18, 48);
-            this.btnAparate.Name = "btnAparate";
-            this.btnAparate.Size = new System.Drawing.Size(157, 23);
-            this.btnAparate.TabIndex = 2;
-            this.btnAparate.Text = "&Aparate";
-            this.btnAparate.UseVisualStyleBackColor = true;
-            this.btnAparate.Click += new System.EventHandler(this.btnAparate_Click);
+            this.btnClienti.Location = new System.Drawing.Point(18, 19);
+            this.btnClienti.Name = "btnClienti";
+            this.btnClienti.Size = new System.Drawing.Size(157, 23);
+            this.btnClienti.TabIndex = 0;
+            this.btnClienti.Text = "&Clienti";
+            this.btnClienti.UseVisualStyleBackColor = true;
+            this.btnClienti.Click += new System.EventHandler(this.btnClienti_Click);
             // 
             // MainForm
             // 

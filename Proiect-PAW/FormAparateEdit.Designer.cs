@@ -31,10 +31,10 @@ namespace Proiect_PAW
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOk = new System.Windows.Forms.Button();
             this.tbDenumire = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -52,6 +52,17 @@ namespace Proiect_PAW
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editeaza aparat";
+            // 
+            // btnOk
+            // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.Location = new System.Drawing.Point(336, 19);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(73, 23);
+            this.btnOk.TabIndex = 4;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // tbDenumire
             // 
@@ -81,17 +92,6 @@ namespace Proiect_PAW
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btnOk
-            // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(336, 19);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(73, 23);
-            this.btnOk.TabIndex = 4;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
@@ -103,7 +103,7 @@ namespace Proiect_PAW
             this.ClientSize = new System.Drawing.Size(516, 83);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAparateEdit";
-            this.Text = "FormAparateEdit";
+            this.Text = "Actualizare date aparat";
             this.Load += new System.EventHandler(this.FormAparateEdit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

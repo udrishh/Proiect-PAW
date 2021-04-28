@@ -15,6 +15,7 @@ namespace Proiect_PAW
     public partial class MainForm : Form
     {
         private List<Aparat> aparate = new List<Aparat>();
+        private List<Client> clienti = new List<Client>();
         public MainForm()
         {
             InitializeComponent();
@@ -29,21 +30,39 @@ namespace Proiect_PAW
         private void MainForm_Load(object sender, EventArgs e)
         {
             //deserializare aparate
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Aparat>));
-            using(FileStream stream = File.OpenRead("aparate.xml"))
+            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
+            using(FileStream streamAparate = File.OpenRead("aparate.xml"))
             {
-                aparate = (List<Aparat>)serializer.Deserialize(stream);
+                aparate = (List<Aparat>)serializerAparate.Deserialize(streamAparate);
+            }
+            //deserializare clienti
+            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
+            using (FileStream streamClienti = File.OpenRead("clienti.xml"))
+            {
+                clienti = (List<Client>)serializerClienti.Deserialize(streamClienti);
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //serializare aparate
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Aparat>));
-            using (FileStream stream = File.Create("aparate.xml"))
+            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
+            using (FileStream streamAparate = File.Create("aparate.xml"))
             {
-                serializer.Serialize(stream, aparate);
+                serializerAparate.Serialize(streamAparate, aparate);
             }
+            //serializare clienti
+            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
+            using (FileStream streamClienti = File.Create("clienti.xml"))
+            {
+                serializerClienti.Serialize(streamClienti, clienti);
+            }
+        }
+
+        private void btnClienti_Click(object sender, EventArgs e)
+        {
+            FormClienti formClienti = new FormClienti(clienti);
+            formClienti.ShowDialog();
         }
     }
 }

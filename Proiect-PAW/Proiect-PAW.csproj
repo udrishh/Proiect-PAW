@@ -60,6 +60,24 @@
     <Compile Include="FormAparateEdit.Designer.cs">
       <DependentUpon>FormAparateEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormClienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClienti.Designer.cs">
+      <DependentUpon>FormClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClientiEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClientiEdit.Designer.cs">
+      <DependentUpon>FormClientiEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRezervari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRezervari.Designer.cs">
+      <DependentUpon>FormRezervari.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +92,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAparateEdit.resx">
       <DependentUpon>FormAparateEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClienti.resx">
+      <DependentUpon>FormClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClientiEdit.resx">
+      <DependentUpon>FormClientiEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRezervari.resx">
+      <DependentUpon>FormRezervari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -13,25 +13,33 @@ namespace Proiect_PAW
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public string Telefon { get; set; }
-        public string DataNasterii { get; set; }
-        public List<Rezervare> Rezervari { get; set; }
+        public DateTime DataNasterii { get; set; }
+        public int NrRezervari { get; set; }
 
         #endregion
 
         #region Constructori
 
-        public Client(int id, string nume, string prenume, string telefon, string dataNasterii, List<Rezervare> rezervari)
+        public Client(int id, string nume, string prenume, string telefon, DateTime dataNasterii, int nrRezervari)
         {
             this.Id = id;
             Nume = nume;
             Prenume = prenume;
             Telefon = telefon;
             DataNasterii = dataNasterii;
-            Rezervari = rezervari;
+            NrRezervari = nrRezervari;
         }
 
         public Client()
         {
+        }
+        #endregion
+
+        #region Metode
+
+        public override string ToString()
+        {
+            return Id + " " + Nume + " " + Prenume;
         }
         #endregion
     }
