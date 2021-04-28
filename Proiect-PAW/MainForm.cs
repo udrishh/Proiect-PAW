@@ -16,6 +16,7 @@ namespace Proiect_PAW
     {
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
+        private List<Rezervare> rezervari = new List<Rezervare>();
         public MainForm()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace Proiect_PAW
             {
                 clienti = (List<Client>)serializerClienti.Deserialize(streamClienti);
             }
+            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -63,6 +65,19 @@ namespace Proiect_PAW
         {
             FormClienti formClienti = new FormClienti(clienti);
             formClienti.ShowDialog();
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            labelClienti.Text = "Clienti: " + clienti.Count;
+            labelAparate.Text = "Aparate: " + aparate.Count;
+            labelRezervari.Text = "Rezervari: " + rezervari.Count;
+        }
+
+        private void btnRezervari_Click(object sender, EventArgs e)
+        {
+            FormRezervari formRezervari = new FormRezervari(rezervari, aparate, clienti);
+            formRezervari.ShowDialog();
         }
     }
 }

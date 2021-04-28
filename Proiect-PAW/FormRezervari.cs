@@ -12,9 +12,15 @@ namespace Proiect_PAW
 {
     public partial class FormRezervari : Form
     {
-        public FormRezervari(List<Rezervare> rezervari, List<Aparat> aparate)
+        private List<Aparat> aparate = new List<Aparat>();
+        private List<Client> clienti = new List<Client>();
+        private List<Rezervare> rezervari = new List<Rezervare>();
+        public FormRezervari(List<Rezervare> rezervari, List<Aparat> aparate, List<Client> clienti)
         {
             InitializeComponent();
+            this.aparate = aparate;
+            this.clienti = clienti;
+            this.rezervari = rezervari;
         }
     }
 }

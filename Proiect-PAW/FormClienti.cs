@@ -22,6 +22,7 @@ namespace Proiect_PAW
 
         void DisplayClienti()
         {
+            clienti.Sort();
             lvClienti.Items.Clear();
             foreach(Client client in clienti)
             {

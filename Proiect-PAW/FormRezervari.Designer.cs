@@ -30,13 +30,13 @@ namespace Proiect_PAW
         private void InitializeComponent()
         {
             this.lvRezervari = new System.Windows.Forms.ListView();
-            this.btnAdaugaRezervare = new System.Windows.Forms.Button();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.durata = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.client = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.aparat1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.aparat2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAdaugaRezervare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvRezervari
@@ -57,15 +57,6 @@ namespace Proiect_PAW
             this.lvRezervari.TabIndex = 0;
             this.lvRezervari.UseCompatibleStateImageBehavior = false;
             this.lvRezervari.View = System.Windows.Forms.View.Details;
-            // 
-            // btnAdaugaRezervare
-            // 
-            this.btnAdaugaRezervare.Location = new System.Drawing.Point(282, 417);
-            this.btnAdaugaRezervare.Name = "btnAdaugaRezervare";
-            this.btnAdaugaRezervare.Size = new System.Drawing.Size(216, 23);
-            this.btnAdaugaRezervare.TabIndex = 1;
-            this.btnAdaugaRezervare.Text = "Adauga Rezervare";
-            this.btnAdaugaRezervare.UseVisualStyleBackColor = true;
             // 
             // id
             // 
@@ -92,6 +83,15 @@ namespace Proiect_PAW
             // 
             this.aparat2.Text = "Aparat 2";
             // 
+            // btnAdaugaRezervare
+            // 
+            this.btnAdaugaRezervare.Location = new System.Drawing.Point(282, 417);
+            this.btnAdaugaRezervare.Name = "btnAdaugaRezervare";
+            this.btnAdaugaRezervare.Size = new System.Drawing.Size(216, 23);
+            this.btnAdaugaRezervare.TabIndex = 1;
+            this.btnAdaugaRezervare.Text = "Adauga Rezervare";
+            this.btnAdaugaRezervare.UseVisualStyleBackColor = true;
+            // 
             // FormRezervari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,7 +100,7 @@ namespace Proiect_PAW
             this.Controls.Add(this.btnAdaugaRezervare);
             this.Controls.Add(this.lvRezervari);
             this.Name = "FormRezervari";
-            this.Text = "FormRezervari";
+            this.Text = "Manager rezervari";
             this.ResumeLayout(false);
 
         }

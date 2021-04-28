@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
-    public class Client
+    public class Client : IComparable<Client>
     {
         #region Atribute
         public int Id { get; set; }
@@ -40,6 +40,11 @@ namespace Proiect_PAW
         public override string ToString()
         {
             return Id + " " + Nume + " " + Prenume;
+        }
+
+        public int CompareTo(Client other)
+        {
+            return Id.CompareTo(other.Id);
         }
         #endregion
     }
