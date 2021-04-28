@@ -42,7 +42,12 @@ namespace Proiect_PAW
             {
                 clienti = (List<Client>)serializerClienti.Deserialize(streamClienti);
             }
-            
+            //deserializare rezervari
+            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
+            using (FileStream streamRezervari = File.OpenRead("rezervari.xml"))
+            {
+                rezervari = (List<Rezervare>)serializerRezervari.Deserialize(streamRezervari);
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,6 +63,12 @@ namespace Proiect_PAW
             using (FileStream streamClienti = File.Create("clienti.xml"))
             {
                 serializerClienti.Serialize(streamClienti, clienti);
+            }
+            //serializare rezervari
+            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
+            using (FileStream streamRezervari = File.Create("rezervari.xml"))
+            {
+                serializerRezervari.Serialize(streamRezervari, rezervari);
             }
         }
 

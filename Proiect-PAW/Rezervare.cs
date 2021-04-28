@@ -13,17 +13,19 @@ namespace Proiect_PAW
         public DateTime Data { get; set; }
         public int Durata { get; set; }
         public Client Client { get; set; }
-        public List<Aparat> Aparate { get; set; }
+        public Aparat Aparat1 { get; set; }
+        public Aparat Aparat2 { get; set; }
 
         #endregion
 
         #region Constructori
 
-        public Rezervare(DateTime data, int durata, List<Aparat> aparate,Client client, int id)
+        public Rezervare(DateTime data, int durata, Aparat aparat1, Aparat aparat2, Client client, int id)
         {
             Data = data;
             Durata = durata;
-            Aparate = aparate;
+            Aparat1 = aparat1;
+            Aparat2 = aparat2;
             Client = client;
             Id = id;
         }
