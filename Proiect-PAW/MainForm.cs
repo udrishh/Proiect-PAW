@@ -144,7 +144,7 @@ namespace Proiect_PAW
         private void aparateXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Filter = "XML file|*.xml";
             saveFileDialog.Title = "Salvare date aparate in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
@@ -160,7 +160,7 @@ namespace Proiect_PAW
         private void clientiXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Filter = "XML file|*.xml";
             saveFileDialog.Title = "Salvare date clienti in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
@@ -176,7 +176,7 @@ namespace Proiect_PAW
         private void rezervariXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Filter = "XML file|*.xml";
             saveFileDialog.Title = "Salvare date rezervari in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
@@ -185,6 +185,63 @@ namespace Proiect_PAW
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
                     serializer.Serialize(stream, rezervari);
+                }
+            }
+        }
+
+        private void aparateCsv_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file|*.csv";
+            saveFileDialog.Title = "Salvare date aparate in format CSV";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //csv aparate
+                using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
+                {
+                    writer.WriteLine("Id, Denumire");
+                    foreach (Aparat aparat in aparate)
+                    {
+                        writer.WriteLine($"{aparat.Id}, {aparat.Denumire}");
+                    }
+                }
+            }
+        }
+
+        private void cleintiCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file|*.csv";
+            saveFileDialog.Title = "Salvare date clienti in format CSV";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //csv clienti
+                using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
+                {
+                    writer.WriteLine("Id, Nume, Prenume, Telefon, Data Nasterii, Nr. rezervari");
+                    foreach (Client client in clienti)
+                    {
+                        writer.WriteLine($"{client.Id}, {client.Nume}, {client.Prenume}, {client.Telefon}, {client.DataNasterii}, {client.NrRezervari}");
+                    }
+                }
+            }
+        }
+
+        private void rezervariCsv_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file|*.csv";
+            saveFileDialog.Title = "Salvare date rezervari in format CSV";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //csv rezervari
+                using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
+                {
+                    writer.WriteLine("Id, Data, Durata, Client, Aparat 1, Aparat 2");
+                    foreach (Rezervare rezervare in rezervari)
+                    {
+                        writer.WriteLine($"{rezervare.Id}, {rezervare.Data}, {rezervare.Durata}, {rezervare.Client}, {rezervare.Aparat1}, {rezervare.Aparat2}");
+                    }
                 }
             }
         }

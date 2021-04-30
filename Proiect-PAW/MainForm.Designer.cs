@@ -168,20 +168,23 @@ namespace Proiect_PAW
             // aparateCsv
             // 
             this.aparateCsv.Name = "aparateCsv";
-            this.aparateCsv.Size = new System.Drawing.Size(121, 22);
+            this.aparateCsv.Size = new System.Drawing.Size(180, 22);
             this.aparateCsv.Text = "Aparate";
+            this.aparateCsv.Click += new System.EventHandler(this.aparateCsv_Click);
             // 
             // cleintiCSV
             // 
             this.cleintiCSV.Name = "cleintiCSV";
-            this.cleintiCSV.Size = new System.Drawing.Size(121, 22);
+            this.cleintiCSV.Size = new System.Drawing.Size(180, 22);
             this.cleintiCSV.Text = "Clienti";
+            this.cleintiCSV.Click += new System.EventHandler(this.cleintiCSV_Click);
             // 
             // rezervariCsv
             // 
             this.rezervariCsv.Name = "rezervariCsv";
-            this.rezervariCsv.Size = new System.Drawing.Size(121, 22);
+            this.rezervariCsv.Size = new System.Drawing.Size(180, 22);
             this.rezervariCsv.Text = "Rezervari";
+            this.rezervariCsv.Click += new System.EventHandler(this.rezervariCsv_Click);
             // 
             // exportBin
             // 
