@@ -30,6 +30,7 @@ namespace Proiect_PAW
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientiEdit));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.tbTelefon = new System.Windows.Forms.TextBox();
@@ -170,6 +171,8 @@ namespace Proiect_PAW
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 132);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClientiEdit";
             this.Text = "Actualizare date client";
             this.Load += new System.EventHandler(this.FormClientiEdit_Load);

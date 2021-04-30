@@ -32,6 +32,7 @@ namespace Proiect_PAW
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRezervari));
             this.lvRezervari = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.data = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,8 +40,12 @@ namespace Proiect_PAW
             this.client = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.aparat1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.aparat2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAdaugaRezervare = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbClienti = new System.Windows.Forms.ComboBox();
             this.cbAparat2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbAparat1 = new System.Windows.Forms.ComboBox();
@@ -52,13 +57,9 @@ namespace Proiect_PAW
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbClienti = new System.Windows.Forms.ComboBox();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvRezervari
@@ -111,6 +112,28 @@ namespace Proiect_PAW
             this.aparat2.Text = "Aparat 2";
             this.aparat2.Width = 200;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(118, 48);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
             // btnAdaugaRezervare
             // 
             this.btnAdaugaRezervare.Location = new System.Drawing.Point(431, 74);
@@ -141,6 +164,15 @@ namespace Proiect_PAW
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adauga rezervare noua";
+            // 
+            // cbClienti
+            // 
+            this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClienti.FormattingEnabled = true;
+            this.cbClienti.Location = new System.Drawing.Point(75, 71);
+            this.cbClienti.Name = "cbClienti";
+            this.cbClienti.Size = new System.Drawing.Size(171, 21);
+            this.cbClienti.TabIndex = 13;
             // 
             // cbAparat2
             // 
@@ -204,7 +236,6 @@ namespace Proiect_PAW
             // 
             // dtpData
             // 
-
             this.dtpData.CustomFormat = "dd MMMM yyyy  -  HH:mm";
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(45, 20);
@@ -243,50 +274,21 @@ namespace Proiect_PAW
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // cbClienti
-            // 
-            this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbClienti.FormattingEnabled = true;
-            this.cbClienti.Location = new System.Drawing.Point(75, 71);
-            this.cbClienti.Name = "cbClienti";
-            this.cbClienti.Size = new System.Drawing.Size(171, 21);
-            this.cbClienti.TabIndex = 13;
-            // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editeazaToolStripMenuItem,
-            this.stergeToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(118, 48);
-            // 
-            // editeazaToolStripMenuItem
-            // 
-            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editeazaToolStripMenuItem.Text = "Editeaza";
-            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
-            // 
-            // stergeToolStripMenuItem
-            // 
-            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stergeToolStripMenuItem.Text = "Sterge";
-            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
-            // 
             // FormRezervari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 531);
+            this.ClientSize = new System.Drawing.Size(802, 531);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvRezervari);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRezervari";
             this.Text = "Manager rezervari";
+            this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

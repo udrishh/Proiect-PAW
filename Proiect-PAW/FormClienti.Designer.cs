@@ -30,6 +30,7 @@ namespace Proiect_PAW
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienti));
             this.lvClienti = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nume = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -232,6 +233,8 @@ namespace Proiect_PAW
             this.ClientSize = new System.Drawing.Size(606, 559);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvClienti);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClienti";
             this.Text = "Manager Clienti";
             this.contextMenuStrip.ResumeLayout(false);
