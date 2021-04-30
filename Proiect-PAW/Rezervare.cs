@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
-    public class Rezervare
+    public class Rezervare : IComparable<Rezervare>
     {
         #region Atribute
         public int Id { get; set; }
@@ -32,7 +32,23 @@ namespace Proiect_PAW
 
         public Rezervare()
         {
+
+        }
+
+        #endregion
+
+        #region Metode
+
+        public override string ToString()
+        {
+            return "#"+Id;
+        }
+
+        public int CompareTo(Rezervare other)
+        {
+            return Id.CompareTo(other.Id);
         }
         #endregion
+
     }
 }

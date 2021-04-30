@@ -50,11 +50,15 @@ namespace Proiect_PAW
             this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbClienti = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbClienti = new System.Windows.Forms.ComboBox();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvRezervari
@@ -66,6 +70,7 @@ namespace Proiect_PAW
             this.client,
             this.aparat1,
             this.aparat2});
+            this.lvRezervari.ContextMenuStrip = this.contextMenuStrip;
             this.lvRezervari.FullRowSelect = true;
             this.lvRezervari.GridLines = true;
             this.lvRezervari.HideSelection = false;
@@ -84,7 +89,7 @@ namespace Proiect_PAW
             // data
             // 
             this.data.Text = "Data";
-            this.data.Width = 100;
+            this.data.Width = 120;
             // 
             // durata
             // 
@@ -94,7 +99,7 @@ namespace Proiect_PAW
             // client
             // 
             this.client.Text = "Client";
-            this.client.Width = 200;
+            this.client.Width = 180;
             // 
             // aparat1
             // 
@@ -118,6 +123,7 @@ namespace Proiect_PAW
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbClienti);
             this.groupBox1.Controls.Add(this.cbAparat2);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cbAparat1);
@@ -127,7 +133,6 @@ namespace Proiect_PAW
             this.groupBox1.Controls.Add(this.dtpData);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbClienti);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnAdaugaRezervare);
             this.groupBox1.Location = new System.Drawing.Point(112, 417);
@@ -181,6 +186,7 @@ namespace Proiect_PAW
             this.btnNou.TabIndex = 8;
             this.btnNou.Text = "Nou";
             this.btnNou.UseVisualStyleBackColor = true;
+            this.btnNou.Click += new System.EventHandler(this.btnNou_Click);
             // 
             // cbDurata
             // 
@@ -198,7 +204,8 @@ namespace Proiect_PAW
             // 
             // dtpData
             // 
-            this.dtpData.CustomFormat = "dd MMM yyyy - HH:mm";
+
+            this.dtpData.CustomFormat = "dd MMMM yyyy  -  HH:mm";
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(45, 20);
             this.dtpData.Name = "dtpData";
@@ -223,19 +230,6 @@ namespace Proiect_PAW
             this.label2.TabIndex = 4;
             this.label2.Text = "Data";
             // 
-            // cbClienti
-            // 
-            this.cbClienti.AccessibleDescription = "";
-            this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbClienti.FormattingEnabled = true;
-            this.cbClienti.Items.AddRange(new object[] {
-            "Selecteaza client"});
-            this.cbClienti.Location = new System.Drawing.Point(45, 71);
-            this.cbClienti.Name = "cbClienti";
-            this.cbClienti.Size = new System.Drawing.Size(200, 21);
-            this.cbClienti.Sorted = true;
-            this.cbClienti.TabIndex = 3;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -249,6 +243,37 @@ namespace Proiect_PAW
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // cbClienti
+            // 
+            this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClienti.FormattingEnabled = true;
+            this.cbClienti.Location = new System.Drawing.Point(75, 71);
+            this.cbClienti.Name = "cbClienti";
+            this.cbClienti.Size = new System.Drawing.Size(171, 21);
+            this.cbClienti.TabIndex = 13;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(118, 48);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
             // FormRezervari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +286,7 @@ namespace Proiect_PAW
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -276,7 +302,6 @@ namespace Proiect_PAW
         private System.Windows.Forms.ColumnHeader aparat1;
         private System.Windows.Forms.ColumnHeader aparat2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cbClienti;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbAparat2;
         private System.Windows.Forms.Label label5;
@@ -288,6 +313,9 @@ namespace Proiect_PAW
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider;
-
+        private ComboBox cbClienti;
+        private ContextMenuStrip contextMenuStrip;
+        private ToolStripMenuItem editeazaToolStripMenuItem;
+        private ToolStripMenuItem stergeToolStripMenuItem;
     }
 }

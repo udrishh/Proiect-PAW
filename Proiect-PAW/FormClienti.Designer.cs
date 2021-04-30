@@ -37,6 +37,9 @@ namespace Proiect_PAW
             this.telefon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataNasterii = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nrRezervari = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAdaugaClient = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbTelefon = new System.Windows.Forms.TextBox();
@@ -48,12 +51,9 @@ namespace Proiect_PAW
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvClienti
@@ -71,7 +71,7 @@ namespace Proiect_PAW
             this.lvClienti.HideSelection = false;
             this.lvClienti.Location = new System.Drawing.Point(12, 30);
             this.lvClienti.Name = "lvClienti";
-            this.lvClienti.Size = new System.Drawing.Size(574, 408);
+            this.lvClienti.Size = new System.Drawing.Size(581, 408);
             this.lvClienti.TabIndex = 0;
             this.lvClienti.UseCompatibleStateImageBehavior = false;
             this.lvClienti.View = System.Windows.Forms.View.Details;
@@ -105,6 +105,28 @@ namespace Proiect_PAW
             this.nrRezervari.Text = "Nr. rezervari";
             this.nrRezervari.Width = 70;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(118, 48);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
             // btnAdaugaClient
             // 
             this.btnAdaugaClient.Location = new System.Drawing.Point(447, 80);
@@ -128,7 +150,7 @@ namespace Proiect_PAW
             this.groupBox1.Controls.Add(this.btnAdaugaClient);
             this.groupBox1.Location = new System.Drawing.Point(12, 444);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(574, 108);
+            this.groupBox1.Size = new System.Drawing.Size(581, 108);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adauga client nou";
@@ -151,6 +173,8 @@ namespace Proiect_PAW
             // 
             // dtpDataNasterii
             // 
+            this.dtpDataNasterii.CustomFormat = "dd MMMM yyyy  -  HH:mm";
+            this.dtpDataNasterii.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataNasterii.Location = new System.Drawing.Point(359, 49);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
             this.dtpDataNasterii.Size = new System.Drawing.Size(188, 20);
@@ -201,41 +225,19 @@ namespace Proiect_PAW
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editeazaToolStripMenuItem,
-            this.stergeToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
-            // 
-            // editeazaToolStripMenuItem
-            // 
-            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editeazaToolStripMenuItem.Text = "Editeaza";
-            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
-            // 
-            // stergeToolStripMenuItem
-            // 
-            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stergeToolStripMenuItem.Text = "Sterge";
-            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
-            // 
             // FormClienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 559);
+            this.ClientSize = new System.Drawing.Size(606, 559);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvClienti);
             this.Name = "FormClienti";
             this.Text = "Manager Clienti";
+            this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

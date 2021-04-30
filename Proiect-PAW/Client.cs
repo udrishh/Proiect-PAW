@@ -39,7 +39,7 @@ namespace Proiect_PAW
 
         public override string ToString()
         {
-            return Id + " " + Nume + " " + Prenume;
+            return Id + " - " + Nume + " " + Prenume;
         }
 
         public int CompareTo(Client other)

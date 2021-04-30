@@ -36,7 +36,6 @@ namespace Proiect_PAW
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verificaDisponibilitateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAdaugaAparat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbDenumire = new System.Windows.Forms.TextBox();
@@ -77,30 +76,23 @@ namespace Proiect_PAW
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editeazaToolStripMenuItem,
-            this.stergeToolStripMenuItem,
-            this.verificaDisponibilitateToolStripMenuItem});
+            this.stergeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 48);
             // 
             // editeazaToolStripMenuItem
             // 
             this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editeazaToolStripMenuItem.Text = "Editeaza";
             this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
             // 
             // stergeToolStripMenuItem
             // 
             this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.stergeToolStripMenuItem.Text = "Sterge";
             this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
-            // 
-            // verificaDisponibilitateToolStripMenuItem
-            // 
-            this.verificaDisponibilitateToolStripMenuItem.Name = "verificaDisponibilitateToolStripMenuItem";
-            this.verificaDisponibilitateToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.verificaDisponibilitateToolStripMenuItem.Text = "Verifica Disponibilitate";
             // 
             // btnAdaugaAparat
             // 
@@ -175,6 +167,5 @@ namespace Proiect_PAW
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verificaDisponibilitateToolStripMenuItem;
     }
 }

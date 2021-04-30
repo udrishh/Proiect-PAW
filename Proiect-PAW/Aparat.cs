@@ -38,6 +38,27 @@ namespace Proiect_PAW
             return this.Id.CompareTo(other.Id);
         }
 
+        public bool IsAvailable(List<Rezervare> rezervari, DateTime dataInceput, int durata)
+        {
+            foreach(Rezervare rezervare in rezervari)
+            {
+                if(rezervare.Aparat1 == this || rezervare.Aparat2 == this)
+                {
+                    DateTime DataInceputRezervare = rezervare.Data;
+                    DateTime DataSfarsitRezervare = rezervare.Data.AddHours(rezervare.Durata);
+
+                    DateTime dataSfarsit = dataInceput.AddHours(durata);
+                    if (((dataInceput <= DataSfarsitRezervare) && (dataInceput >= DataInceputRezervare)) ||
+                        ((dataSfarsit <= DataSfarsitRezervare) && (dataSfarsit >= DataInceputRezervare)))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         #endregion
     }
 }

@@ -30,7 +30,7 @@ namespace Proiect_PAW
                 lvItem.SubItems.Add(client.Nume);
                 lvItem.SubItems.Add(client.Prenume);
                 lvItem.SubItems.Add(client.Telefon);
-                lvItem.SubItems.Add(client.DataNasterii.ToString("dd.MM.yyyy"));
+                lvItem.SubItems.Add(client.DataNasterii.ToString("dd.MMMM.yyyy"));
                 lvItem.SubItems.Add(client.NrRezervari.ToString());
 
                 lvItem.Tag = client;

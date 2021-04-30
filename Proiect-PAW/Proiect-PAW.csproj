@@ -78,6 +78,12 @@
     <Compile Include="FormRezervari.Designer.cs">
       <DependentUpon>FormRezervari.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRezervariEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRezervariEdit.Designer.cs">
+      <DependentUpon>FormRezervariEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRezervari.resx">
       <DependentUpon>FormRezervari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRezervariEdit.resx">
+      <DependentUpon>FormRezervariEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
