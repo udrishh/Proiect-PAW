@@ -235,20 +235,23 @@ namespace Proiect_PAW
             // aparateXml
             // 
             this.aparateXml.Name = "aparateXml";
-            this.aparateXml.Size = new System.Drawing.Size(121, 22);
+            this.aparateXml.Size = new System.Drawing.Size(180, 22);
             this.aparateXml.Text = "Aparate";
+            this.aparateXml.Click += new System.EventHandler(this.aparateXml_Click);
             // 
             // clientiXml
             // 
             this.clientiXml.Name = "clientiXml";
-            this.clientiXml.Size = new System.Drawing.Size(121, 22);
+            this.clientiXml.Size = new System.Drawing.Size(180, 22);
             this.clientiXml.Text = "Clienti";
+            this.clientiXml.Click += new System.EventHandler(this.clientiXml_Click);
             // 
             // rezervariXml
             // 
             this.rezervariXml.Name = "rezervariXml";
-            this.rezervariXml.Size = new System.Drawing.Size(121, 22);
+            this.rezervariXml.Size = new System.Drawing.Size(180, 22);
             this.rezervariXml.Text = "Rezervari";
+            this.rezervariXml.Click += new System.EventHandler(this.rezervariXml_Click);
             // 
             // MainForm
             // 

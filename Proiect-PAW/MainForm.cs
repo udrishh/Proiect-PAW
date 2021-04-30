@@ -140,5 +140,53 @@ namespace Proiect_PAW
                 }
             }
         }
+
+        private void aparateXml_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Title = "Salvare date aparate in format XML";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //xml aparate
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Aparat>));
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    serializer.Serialize(stream, aparate);
+                }
+            }
+        }
+
+        private void clientiXml_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Title = "Salvare date clienti in format XML";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //xml clienti
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Client>));
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    serializer.Serialize(stream, clienti);
+                }
+            }
+        }
+
+        private void rezervariXml_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XmL file|*.xml";
+            saveFileDialog.Title = "Salvare date rezervari in format XML";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //xml rezervari
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Rezervare>));
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    serializer.Serialize(stream, rezervari);
+                }
+            }
+        }
     }
 }
