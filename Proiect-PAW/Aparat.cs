@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
+    [Serializable]
     public class Aparat : IComparable<Aparat>
     {
         #region Atribute

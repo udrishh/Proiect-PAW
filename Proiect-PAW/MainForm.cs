@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -89,6 +90,55 @@ namespace Proiect_PAW
         {
             FormRezervari formRezervari = new FormRezervari(rezervari, aparate, clienti);
             formRezervari.ShowDialog();
+        }
+
+        private void aparateBin_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary file|*.bin";
+            saveFileDialog.Title = "Salvare date aparate in format binar";
+            if( saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName!= "")
+            {
+                //binary aparate
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    formatter.Serialize(stream, aparate);
+                }
+            }
+
+        }
+
+        private void clientiBin_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary file|*.bin";
+            saveFileDialog.Title = "Salvare date clienti in format binar";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //binary clienti
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    formatter.Serialize(stream, clienti);
+                }
+            }
+        }
+
+        private void RezervariBin_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary file|*.bin";
+            saveFileDialog.Title = "Salvare date rezervari in format binar";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
+            {
+                //binary rezervari
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream stream = File.Create(saveFileDialog.FileName))
+                {
+                    formatter.Serialize(stream, rezervari);
+                }
+            }
         }
     }
 }
