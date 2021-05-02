@@ -39,6 +39,7 @@ namespace Proiect_PAW
 
         void DisplayRezervari()
         {
+            rezervari.Sort();
             lvRezervari.Items.Clear();
             foreach(Rezervare rezervare in rezervari)
             {
