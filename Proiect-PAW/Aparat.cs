@@ -31,7 +31,14 @@ namespace Proiect_PAW
         #region Metode
         public override string ToString()
         {
-            return Id + " - " + Denumire;
+            if(this.Id == -1)
+            {
+                return "null";
+            }
+            else
+            {
+                return Id + " - " + Denumire;
+            }
         }
 
         public int CompareTo(Aparat other)
@@ -43,7 +50,7 @@ namespace Proiect_PAW
         {
             foreach(Rezervare rezervare in rezervari)
             {
-                if(rezervare.Aparat1 == this || rezervare.Aparat2 == this)
+                if(rezervare.Aparat1.ToString() == this.ToString())
                 {
                     DateTime DataInceputRezervare = rezervare.Data;
                     DateTime DataSfarsitRezervare = rezervare.Data.AddHours(rezervare.Durata);
@@ -55,8 +62,23 @@ namespace Proiect_PAW
                         return false;
                     }
                 }
-            }
+                if(rezervare.Aparat2 != null)
+                {
+                    if(rezervare.Aparat2.ToString() == this.ToString())
+                    {
+                        DateTime DataInceputRezervare = rezervare.Data;
+                        DateTime DataSfarsitRezervare = rezervare.Data.AddHours(rezervare.Durata);
 
+                        DateTime dataSfarsit = dataInceput.AddHours(durata);
+                        if (((dataInceput <= DataSfarsitRezervare) && (dataInceput >= DataInceputRezervare)) ||
+                            ((dataSfarsit <= DataSfarsitRezervare) && (dataSfarsit >= DataInceputRezervare)))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+      
             return true;
         }
 

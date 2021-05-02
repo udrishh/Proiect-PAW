@@ -47,10 +47,8 @@ namespace Proiect_PAW
                 lvItem.SubItems.Add(rezervare.Durata.ToString());
                 lvItem.SubItems.Add(rezervare.Client.ToString());
                 lvItem.SubItems.Add(rezervare.Aparat1.ToString());
-                if(rezervare.Aparat2 != null)
-                {
+                if(rezervare.Aparat2 !=null)
                     lvItem.SubItems.Add(rezervare.Aparat2.ToString());
-                }
 
                 lvItem.Tag = rezervare;
 
