@@ -284,6 +284,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRezervari";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manager rezervari";
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

@@ -21,6 +21,9 @@ namespace Proiect_PAW
         public MainForm()
         {
             InitializeComponent();
+            gbManagerDate.Enabled = false;
+            toolStrip.Enabled = false;
+            gbUtilizator.Visible = false;
         }
 
         private void btnAparate_Click(object sender, EventArgs e)
@@ -244,6 +247,33 @@ namespace Proiect_PAW
                     }
                 }
             }
+        }
+
+        private void btnAutentificare_Click(object sender, EventArgs e)
+        {
+            if((tbUtilizator.Text == "admin" && tbParola.Text == "admin") || (tbUtilizator.Text == "Bogdan" && tbParola.Text == "pass"))
+            {
+                gbManagerDate.Enabled = true;
+                toolStrip.Enabled = true;
+                gbUtilizator.Visible = true;
+                gbAutentificare.Visible = false;
+                gbUtilizator.Text = "Salut, " + tbUtilizator.Text + "!";
+                tbUtilizator.Clear();
+                tbParola.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Nume de utilizator si/sau parola incorecta!", "Eroare autentificare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbParola.Clear();
+            }
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            gbAutentificare.Visible = true;
+            gbManagerDate.Enabled = false;
+            toolStrip.Enabled = false;
+            gbUtilizator.Visible = false;
         }
     }
 }

@@ -106,6 +106,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAparateEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Actualizare date aparat";
             this.Load += new System.EventHandler(this.FormAparateEdit_Load);
             this.groupBox1.ResumeLayout(false);

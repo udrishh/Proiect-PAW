@@ -185,6 +185,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRezervariEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormRezervariEdit";
             this.Load += new System.EventHandler(this.FormRezervariEdit_Load);
             this.groupBox1.ResumeLayout(false);

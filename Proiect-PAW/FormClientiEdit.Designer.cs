@@ -174,6 +174,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClientiEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Actualizare date client";
             this.Load += new System.EventHandler(this.FormClientiEdit_Load);
             this.groupBox1.ResumeLayout(false);
