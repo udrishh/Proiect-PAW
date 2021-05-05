@@ -122,6 +122,7 @@ namespace Proiect_PAW
             // 
             // editeazaToolStripMenuItem
             // 
+            this.editeazaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editeazaToolStripMenuItem.Image")));
             this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
             this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editeazaToolStripMenuItem.Text = "Editeaza";
@@ -129,6 +130,7 @@ namespace Proiect_PAW
             // 
             // stergeToolStripMenuItem
             // 
+            this.stergeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("stergeToolStripMenuItem.Image")));
             this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
             this.stergeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.stergeToolStripMenuItem.Text = "Sterge";

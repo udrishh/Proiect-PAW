@@ -25,8 +25,10 @@ namespace Proiect_PAW
             this.clienti = clienti;
             this.rezervari = rezervari;
 
+            BindingList<Client> clientiComboBox = new BindingList<Client>(clienti);
+
             clienti.Sort();
-            cbClienti.DataSource = clienti;
+            cbClienti.DataSource = clientiComboBox;
             cbClienti.SelectedIndex = -1;
             aparate1 = new List<Aparat>(aparate);
             aparate2 = new List<Aparat>(aparate);
@@ -158,6 +160,10 @@ namespace Proiect_PAW
         {
             FormClienti formClienti = new FormClienti(clienti);
             formClienti.ShowDialog();
+
+            BindingList<Client> clientiComboBox = new BindingList<Client>(clienti);
+            cbClienti.DataSource = clientiComboBox;
+            cbClienti.SelectedIndex = -1;
         }
 
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
