@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,17 @@ namespace Proiect_PAW
 {
     public partial class FormRezervariEdit : Form
     {
+        #region Atribute
         Rezervare rezervare = new Rezervare();
         List<Rezervare> rezervari = new List<Rezervare>();
         List<Aparat> aparate1 = new List<Aparat>();
         List<Aparat> aparate2 = new List<Aparat>();
         int index1 = -1;
         int index2 = -1;
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
         public FormRezervariEdit(List<Rezervare> rezervari, Rezervare rezervare, List<Aparat> aparate1, List<Aparat> aparate2, int index1, int index2)
         {
             InitializeComponent();
@@ -30,6 +36,34 @@ namespace Proiect_PAW
             
         }
 
+        private void UpdateRezervare(Rezervare rezervare)
+        {
+            string query = "UPDATE Rezervari SET Data=@data, Durata=@durata, Client=@client, Aparat1=@aparat1, Aparat2=@aparat2 WHERE Id=@id";
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", rezervare.Id);
+                command.Parameters.AddWithValue("@data", rezervare.Data.ToString("g"));
+                command.Parameters.AddWithValue("@durata", rezervare.Durata);
+                command.Parameters.AddWithValue("@client", rezervare.Client.Id);
+                command.Parameters.AddWithValue("@aparat1", rezervare.Aparat1.Id);
+                if (rezervare.Aparat2 != null)
+                {
+                    command.Parameters.AddWithValue("@aparat2", rezervare.Aparat2.Id);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@aparat2", 0);
+                }
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void FormRezervariEdit_Load(object sender, EventArgs e)
         {
             dtpData.Value = rezervare.Data;
@@ -56,6 +90,8 @@ namespace Proiect_PAW
             {
                 rezervare.Aparat2 = (Aparat)cbAparat2.SelectedItem;
             }
+
+            UpdateRezervare(rezervare);
         }
 
         private void dtpData_Validating(object sender, CancelEventArgs e)
@@ -131,5 +167,6 @@ namespace Proiect_PAW
         {
             errorProvider.SetError(cbAparat2, null);
         }
+        #endregion
     }
 }

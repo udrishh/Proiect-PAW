@@ -54,6 +54,7 @@ namespace Proiect_PAW
                 }
             }
         }
+
         private void LoadClienti()
         {
             string query = "SELECT * FROM Clienti";
@@ -80,6 +81,63 @@ namespace Proiect_PAW
                 }
             }
         }
+
+        private void LoadRezervari()
+        {
+            string query = "SELECT * FROM Rezervari";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        DateTime data = DateTime.Parse((string)reader["Data"]);
+                        long durata = (long)reader["Durata"];
+                        long idClient = (long)reader["Client"];
+                        long idAparat1 = (long)reader["Aparat1"];
+                        long idAparat2 = (long)reader["Aparat2"];
+
+                        Client client = null;
+                        foreach(Client clientAux in clienti)
+                        {
+                            if(clientAux.Id == idClient)
+                            {
+                                client = clientAux;
+                            }
+                        }
+
+                        Aparat aparat1 = null;
+                        foreach (Aparat aparatAux in aparate)
+                        {
+                            if (aparatAux.Id == idAparat1)
+                            {
+                                aparat1 = aparatAux;
+                            }
+                        }
+
+                        Aparat aparat2 = null;
+                        if (idAparat2 != 0)
+                        {
+                            foreach (Aparat aparatAux in aparate)
+                            {
+                                if (aparatAux.Id == idAparat1)
+                                {
+                                    aparat2 = aparatAux;
+                                }
+                            }
+                        }
+
+                        Rezervare rezervare = new Rezervare(data, (int)durata, aparat1, aparat2, client, (int)id);
+                        rezervari.Add(rezervare);
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Evenimente
@@ -93,6 +151,7 @@ namespace Proiect_PAW
         {
             LoadAparate();
             LoadClienti();
+            LoadRezervari();
         }
 
         private void btnClienti_Click(object sender, EventArgs e)
