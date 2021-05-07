@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,39 @@ namespace Proiect_PAW
 {
     public partial class FormClientiEdit : Form
     {
+        #region Atribute
         public Client client = new Client();
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
         public FormClientiEdit(Client client)
         {
             InitializeComponent();
             this.client = client;
         }
 
+        private void UpdateClient(Client client)
+        {
+            string query = "UPDATE Clienti SET Nume=@nume, Prenume=@prenume, Telefon=@telefon, DataNasterii=@dataNasterii, NrRezervari=@nrRezervari WHERE Id=@id";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@nume", client.Nume);
+                command.Parameters.AddWithValue("@prenume", client.Prenume);
+                command.Parameters.AddWithValue("@telefon", client.Telefon);
+                command.Parameters.AddWithValue("@dataNasterii", client.DataNasterii.ToString("d"));
+                command.Parameters.AddWithValue("@nrRezervari", client.NrRezervari);
+                command.Parameters.AddWithValue("@id", client.Id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void FormClientiEdit_Load(object sender, EventArgs e)
         {
             tbNume.Text = client.Nume;
@@ -33,6 +60,7 @@ namespace Proiect_PAW
             client.Prenume = tbPrenume.Text.Trim();
             client.Telefon = tbTelefon.Text.Trim();
             client.DataNasterii = dtpDataNasterii.Value;
+            UpdateClient(client);
         }
 
         private void tbNume_Validating(object sender, CancelEventArgs e)
@@ -90,5 +118,6 @@ namespace Proiect_PAW
         {
             errorProvider.SetError(dtpDataNasterii, null);
         }
+        #endregion
     }
 }

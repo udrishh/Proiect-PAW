@@ -85,19 +85,6 @@ namespace Proiect_PAW
 
             if(aparat.Denumire.Length > 3)
             {
-                //determinare id
-                foreach (Aparat aparatExistent in aparate)
-                {
-                    if (aparat.Id == aparatExistent.Id)
-                    {
-                        aparat.Id++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
                 errorProvider.SetError(tbDenumire,null);
                 AddAparat(aparat);
                 tbDenumire.ResetText();

@@ -16,11 +16,14 @@ namespace Proiect_PAW
 {
     public partial class MainForm : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
         private List<Rezervare> rezervari = new List<Rezervare>();
         private readonly string connectionString = "Data Source=database.db";
+        #endregion
 
+        #region Metode
         public MainForm()
         {
             InitializeComponent();
@@ -29,6 +32,57 @@ namespace Proiect_PAW
             gbUtilizator.Visible = false;
         }
 
+        private void LoadAparate()
+        {
+            string query = "SELECT * FROM Aparate";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        string denumire = (string)reader["Denumire"];
+
+                        Aparat aparat = new Aparat(denumire, (int)id);
+                        aparate.Add(aparat);
+                    }
+                }
+            }
+        }
+        private void LoadClienti()
+        {
+            string query = "SELECT * FROM Clienti";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        string nume = (string)reader["Nume"];
+                        string prenume = (string)reader["Prenume"];
+                        string telefon = (string)reader["Telefon"];
+                        DateTime dataNasterii = DateTime.Parse((string)reader["DataNasterii"]);
+                        long nrRezervari = (long)reader["NrRezervari"];
+
+                        Client client = new Client((int)id, nume, prenume, telefon, dataNasterii, (int)nrRezervari);
+                        clienti.Add(client);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAparate_Click(object sender, EventArgs e)
         {
             FormAparate formAparate = new FormAparate(aparate);
@@ -38,6 +92,7 @@ namespace Proiect_PAW
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadAparate();
+            LoadClienti();
         }
 
         private void btnClienti_Click(object sender, EventArgs e)
@@ -66,14 +121,12 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format binar";
             if( saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName!= "")
             {
-                //binary aparate
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
                     formatter.Serialize(stream, aparate);
                 }
             }
-
         }
 
         private void clientiBin_Click(object sender, EventArgs e)
@@ -83,7 +136,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format binar";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //binary clienti
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -99,7 +151,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format binar";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //binary rezervari
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -115,7 +166,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml aparate
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Aparat>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -131,7 +181,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml clienti
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Client>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -147,7 +196,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml rezervari
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Rezervare>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -163,7 +211,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv aparate
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Denumire");
@@ -182,7 +229,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv clienti
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Nume, Prenume, Telefon, Data Nasterii, Nr. rezervari");
@@ -201,7 +247,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv rezervari
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Data, Durata, Client, Aparat 1, Aparat 2");
@@ -239,28 +284,6 @@ namespace Proiect_PAW
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
         }
-
-        private void LoadAparate()
-        {
-            string query = "SELECT * FROM Aparate";
-
-            using (SqliteConnection connection = new SqliteConnection(connectionString))
-            {
-                SqliteCommand command = new SqliteCommand(query, connection);
-
-                connection.Open();
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    while(reader.Read())
-                    {
-                        long id = (long)reader["Id"];
-                        string denumire = (string)reader["Denumire"];
-
-                        Aparat aparat = new Aparat(denumire, (int)id);
-                        aparate.Add(aparat);
-                    }
-                }
-            }
-        }
+        #endregion
     }
 }

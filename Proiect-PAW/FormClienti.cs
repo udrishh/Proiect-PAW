@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,12 @@ namespace Proiect_PAW
 {
     public partial class FormClienti : Form
     {
+        #region Atribute
         public List<Client> clienti;
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
         public FormClienti(List<Client> clienti)
         {
             InitializeComponent();
@@ -30,13 +36,54 @@ namespace Proiect_PAW
                 lvItem.SubItems.Add(client.Nume);
                 lvItem.SubItems.Add(client.Prenume);
                 lvItem.SubItems.Add(client.Telefon);
-                lvItem.SubItems.Add(client.DataNasterii.ToString("dd.MMMM.yyyy"));
+                lvItem.SubItems.Add(client.DataNasterii.ToString("d"));
                 lvItem.SubItems.Add(client.NrRezervari.ToString());
 
                 lvItem.Tag = client;
                 lvClienti.Items.Add(lvItem);
             }
         }
+
+        void AddClient(Client client)
+        {
+            string query = "INSERT INTO Clienti(Nume, Prenume, Telefon, DataNasterii, NrRezervari) VALUES(@nume, @prenume, @telefon, @dataNasterii, @nrRezervari); SELECT last_insert_rowid()";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@nume", client.Nume);
+                command.Parameters.AddWithValue("@prenume", client.Prenume);
+                command.Parameters.AddWithValue("@telefon", client.Telefon);
+                command.Parameters.AddWithValue("@dataNasterii", client.DataNasterii.ToString("d"));
+                command.Parameters.AddWithValue("@nrRezervari", client.NrRezervari);
+
+                connection.Open();
+                long id = (long)command.ExecuteScalar();
+                client.Id = (int)id;
+
+                clienti.Add(client);
+            }
+        }
+        
+        void RemoveClient(Client client)
+        {
+            string query = "DELETE FROM Clienti WHERE Id=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", client.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                clienti.Remove(client);
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
             Client client = new Client();
@@ -81,20 +128,8 @@ namespace Proiect_PAW
                 client.Telefon = tbTelefon.Text.Trim();
             }
             client.NrRezervari = 0;
-            //determinare id
-            client.Id = 1;
-            foreach (Client clientExistent in clienti)
-            {
-                if (client.Id == clientExistent.Id)
-                {
-                    client.Id++;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            clienti.Add(client);
+
+            AddClient(client);
             DisplayClienti();
             tbNume.Clear();
             tbPrenume.Clear();
@@ -118,7 +153,7 @@ namespace Proiect_PAW
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                clienti.Remove(client);
+                RemoveClient(client);
                 DisplayClienti();
             }
         }
@@ -140,5 +175,6 @@ namespace Proiect_PAW
                 DisplayClienti();
             }
         }
+        #endregion
     }
 }
