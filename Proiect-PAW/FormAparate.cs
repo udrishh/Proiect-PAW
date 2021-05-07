@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,12 @@ namespace Proiect_PAW
 {
     public partial class FormAparate : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
         public FormAparate(List<Aparat> aparate)
         {
             InitializeComponent();
@@ -24,7 +30,7 @@ namespace Proiect_PAW
         {
             aparate.Sort();
             lvAparate.Items.Clear();
-            foreach(Aparat aparat in aparate)
+            foreach (Aparat aparat in aparate)
             {
                 ListViewItem lvItem = new ListViewItem(aparat.Id.ToString());
                 lvItem.SubItems.Add(aparat.Denumire);
@@ -35,6 +41,42 @@ namespace Proiect_PAW
             }
         }
 
+        private void AddAparat(Aparat aparat)
+        {
+            string query = "INSERT INTO Aparate(Denumire) VALUES(@denumire); SELECT last_insert_rowid()";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@denumire", aparat.Denumire);
+
+                connection.Open();
+                long id = (long)command.ExecuteScalar();
+                aparat.Id = (int)id;
+
+                aparate.Add(aparat);
+            }
+        }
+
+        private void RemoveAparat(Aparat aparat)
+        {
+            string query = "DELETE FROM Aparate WHERE Id=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", aparat.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                aparate.Remove(aparat);
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAdaugaAparat_Click(object sender, EventArgs e)
         {
             Aparat aparat = new Aparat();
@@ -57,15 +99,14 @@ namespace Proiect_PAW
                 }
 
                 errorProvider.SetError(tbDenumire,null);
-                aparate.Add(aparat);
+                AddAparat(aparat);
                 tbDenumire.ResetText();
                 DisplayAparate();
             }
             else
             {
                 errorProvider.SetError(tbDenumire, "Denumire invalida!");
-            }
-            
+            }  
         }
 
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,7 +125,7 @@ namespace Proiect_PAW
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if(result == DialogResult.Yes)
             {
-                aparate.Remove(aparat);
+                RemoveAparat(aparat);
                 DisplayAparate();
             }
         }
@@ -114,5 +155,6 @@ namespace Proiect_PAW
                 DisplayAparate();
             }
         }
+        #endregion
     }
 }

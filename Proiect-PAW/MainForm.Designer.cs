@@ -390,7 +390,6 @@ namespace Proiect_PAW
             this.Name = "MainForm";
             this.Text = "Manager Sala de Gimnastica";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.gbManagerDate.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);

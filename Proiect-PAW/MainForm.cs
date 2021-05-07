@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,8 @@ namespace Proiect_PAW
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
         private List<Rezervare> rezervari = new List<Rezervare>();
+        private readonly string connectionString = "Data Source=database.db";
+
         public MainForm()
         {
             InitializeComponent();
@@ -34,46 +37,7 @@ namespace Proiect_PAW
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //deserializare aparate
-            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
-            using(FileStream streamAparate = File.OpenRead("aparate.xml"))
-            {
-                aparate = (List<Aparat>)serializerAparate.Deserialize(streamAparate);
-            }
-            //deserializare clienti
-            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
-            using (FileStream streamClienti = File.OpenRead("clienti.xml"))
-            {
-                clienti = (List<Client>)serializerClienti.Deserialize(streamClienti);
-            }
-            //deserializare rezervari
-            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
-            using (FileStream streamRezervari = File.OpenRead("rezervari.xml"))
-            {
-                rezervari = (List<Rezervare>)serializerRezervari.Deserialize(streamRezervari);
-            }
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //serializare aparate
-            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
-            using (FileStream streamAparate = File.Create("aparate.xml"))
-            {
-                serializerAparate.Serialize(streamAparate, aparate);
-            }
-            //serializare clienti
-            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
-            using (FileStream streamClienti = File.Create("clienti.xml"))
-            {
-                serializerClienti.Serialize(streamClienti, clienti);
-            }
-            //serializare rezervari
-            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
-            using (FileStream streamRezervari = File.Create("rezervari.xml"))
-            {
-                serializerRezervari.Serialize(streamRezervari, rezervari);
-            }
+            LoadAparate();
         }
 
         private void btnClienti_Click(object sender, EventArgs e)
@@ -274,6 +238,29 @@ namespace Proiect_PAW
             gbManagerDate.Enabled = false;
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
+        }
+
+        private void LoadAparate()
+        {
+            string query = "SELECT * FROM Aparate";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        string denumire = (string)reader["Denumire"];
+
+                        Aparat aparat = new Aparat(denumire, (int)id);
+                        aparate.Add(aparat);
+                    }
+                }
+            }
         }
     }
 }
