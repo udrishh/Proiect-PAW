@@ -176,7 +176,7 @@ namespace Proiect_PAW
             // 
             // dtpDataNasterii
             // 
-            this.dtpDataNasterii.CustomFormat = "dd MMMM yyyy  -  HH:mm";
+            this.dtpDataNasterii.CustomFormat = "dd.MM.yyyy";
             this.dtpDataNasterii.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataNasterii.Location = new System.Drawing.Point(359, 49);
             this.dtpDataNasterii.Name = "dtpDataNasterii";

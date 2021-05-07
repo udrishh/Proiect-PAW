@@ -238,7 +238,7 @@ namespace Proiect_PAW
             // 
             // dtpData
             // 
-            this.dtpData.CustomFormat = "dd MMMM yyyy  -  HH:mm";
+            this.dtpData.CustomFormat = "dd.MM.yyyy  -  HH:mm";
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(45, 20);
             this.dtpData.Name = "dtpData";
