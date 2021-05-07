@@ -1,11 +1,10 @@
-# Proiect-PAW
-Proiect PAW - Sala de gimnastica
+# Proiect - Windows Applications Programming
 
-Proiect Windows Applications Programming pentru gestiunea unei sali de gimnastica.
---
-username: admin
-password: admin
-
---
-Udris Bogdan 
+Proiect PAW pentru gestiunea unei sali de gimnastica.<br>
+--<br>
+username: admin<br>
+password: admin<br>
+<br>
+--<br>
+Udris Bogdan <br>
 IE@CSIE an2 sem2 - 1055 D
