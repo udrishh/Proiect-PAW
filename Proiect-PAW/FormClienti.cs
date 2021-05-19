@@ -176,5 +176,10 @@ namespace Proiect_PAW
             }
         }
         #endregion
+
+        private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace Proiect_PAW
                 rezervari.Add(rezervare);
             }
 
-            rezervare.Client.NrRezervari++;
+            //rezervare.Client.NrRezervari++;
             string query2 = "UPDATE Clienti SET NrRezervari=NrRezervari+1 WHERE Id=@id";
 
             using(SqliteConnection connection = new SqliteConnection(connectionString))
@@ -251,7 +251,6 @@ namespace Proiect_PAW
             if (result == DialogResult.Yes)
             {
                 RemoveRezervare(rezervare);
-                rezervare.Client.NrRezervari--;
                 DisplayRezervari();
             }
         }
@@ -294,5 +293,10 @@ namespace Proiect_PAW
             }
         }
         #endregion
+
+        private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

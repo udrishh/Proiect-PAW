@@ -57,9 +57,12 @@ namespace Proiect_PAW
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.inapoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvRezervari
@@ -75,9 +78,9 @@ namespace Proiect_PAW
             this.lvRezervari.FullRowSelect = true;
             this.lvRezervari.GridLines = true;
             this.lvRezervari.HideSelection = false;
-            this.lvRezervari.Location = new System.Drawing.Point(12, 12);
+            this.lvRezervari.Location = new System.Drawing.Point(12, 27);
             this.lvRezervari.Name = "lvRezervari";
-            this.lvRezervari.Size = new System.Drawing.Size(780, 399);
+            this.lvRezervari.Size = new System.Drawing.Size(780, 376);
             this.lvRezervari.TabIndex = 0;
             this.lvRezervari.UseCompatibleStateImageBehavior = false;
             this.lvRezervari.View = System.Windows.Forms.View.Details;
@@ -138,7 +141,7 @@ namespace Proiect_PAW
             // 
             // btnAdaugaRezervare
             // 
-            this.btnAdaugaRezervare.Location = new System.Drawing.Point(431, 74);
+            this.btnAdaugaRezervare.Location = new System.Drawing.Point(434, 81);
             this.btnAdaugaRezervare.Name = "btnAdaugaRezervare";
             this.btnAdaugaRezervare.Size = new System.Drawing.Size(110, 23);
             this.btnAdaugaRezervare.TabIndex = 1;
@@ -160,9 +163,9 @@ namespace Proiect_PAW
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnAdaugaRezervare);
-            this.groupBox1.Location = new System.Drawing.Point(112, 417);
+            this.groupBox1.Location = new System.Drawing.Point(128, 409);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(553, 109);
+            this.groupBox1.Size = new System.Drawing.Size(550, 110);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adauga rezervare noua";
@@ -180,7 +183,7 @@ namespace Proiect_PAW
             // 
             this.cbAparat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAparat2.FormattingEnabled = true;
-            this.cbAparat2.Location = new System.Drawing.Point(355, 48);
+            this.cbAparat2.Location = new System.Drawing.Point(358, 48);
             this.cbAparat2.Name = "cbAparat2";
             this.cbAparat2.Size = new System.Drawing.Size(186, 21);
             this.cbAparat2.TabIndex = 12;
@@ -188,7 +191,7 @@ namespace Proiect_PAW
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(302, 51);
+            this.label5.Location = new System.Drawing.Point(305, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 11;
@@ -198,7 +201,7 @@ namespace Proiect_PAW
             // 
             this.cbAparat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAparat1.FormattingEnabled = true;
-            this.cbAparat1.Location = new System.Drawing.Point(355, 21);
+            this.cbAparat1.Location = new System.Drawing.Point(358, 21);
             this.cbAparat1.Name = "cbAparat1";
             this.cbAparat1.Size = new System.Drawing.Size(186, 21);
             this.cbAparat1.TabIndex = 10;
@@ -206,7 +209,7 @@ namespace Proiect_PAW
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(302, 24);
+            this.label4.Location = new System.Drawing.Point(305, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 9;
@@ -276,23 +279,46 @@ namespace Proiect_PAW
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inapoiToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // inapoiToolStripMenuItem
+            // 
+            this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Text = "Inapoi";
+            this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
+            // 
             // FormRezervari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 531);
+            this.ClientSize = new System.Drawing.Size(804, 531);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvRezervari);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormRezervari";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manager rezervari";
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -322,5 +348,7 @@ namespace Proiect_PAW
         private ContextMenuStrip contextMenuStrip;
         private ToolStripMenuItem editeazaToolStripMenuItem;
         private ToolStripMenuItem stergeToolStripMenuItem;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem inapoiToolStripMenuItem;
     }
 }

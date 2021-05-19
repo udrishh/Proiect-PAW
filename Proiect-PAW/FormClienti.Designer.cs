@@ -52,9 +52,12 @@ namespace Proiect_PAW
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.inapoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvClienti
@@ -70,9 +73,9 @@ namespace Proiect_PAW
             this.lvClienti.FullRowSelect = true;
             this.lvClienti.GridLines = true;
             this.lvClienti.HideSelection = false;
-            this.lvClienti.Location = new System.Drawing.Point(12, 30);
+            this.lvClienti.Location = new System.Drawing.Point(12, 27);
             this.lvClienti.Name = "lvClienti";
-            this.lvClienti.Size = new System.Drawing.Size(581, 408);
+            this.lvClienti.Size = new System.Drawing.Size(780, 376);
             this.lvClienti.TabIndex = 0;
             this.lvClienti.UseCompatibleStateImageBehavior = false;
             this.lvClienti.View = System.Windows.Forms.View.Details;
@@ -84,22 +87,22 @@ namespace Proiect_PAW
             // nume
             // 
             this.nume.Text = "Nume";
-            this.nume.Width = 120;
+            this.nume.Width = 200;
             // 
             // prenume
             // 
             this.prenume.Text = "Prenume";
-            this.prenume.Width = 120;
+            this.prenume.Width = 200;
             // 
             // telefon
             // 
             this.telefon.Text = "Telefon";
-            this.telefon.Width = 100;
+            this.telefon.Width = 120;
             // 
             // dataNasterii
             // 
             this.dataNasterii.Text = "Data nasterii";
-            this.dataNasterii.Width = 100;
+            this.dataNasterii.Width = 125;
             // 
             // nrRezervari
             // 
@@ -112,13 +115,13 @@ namespace Proiect_PAW
             this.editeazaToolStripMenuItem,
             this.stergeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(118, 48);
             // 
             // editeazaToolStripMenuItem
             // 
             this.editeazaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editeazaToolStripMenuItem.Image")));
             this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editeazaToolStripMenuItem.Text = "Editeaza";
             this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
             // 
@@ -126,13 +129,13 @@ namespace Proiect_PAW
             // 
             this.stergeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("stergeToolStripMenuItem.Image")));
             this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.stergeToolStripMenuItem.Text = "Sterge";
             this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
             // 
             // btnAdaugaClient
             // 
-            this.btnAdaugaClient.Location = new System.Drawing.Point(447, 80);
+            this.btnAdaugaClient.Location = new System.Drawing.Point(425, 81);
             this.btnAdaugaClient.Name = "btnAdaugaClient";
             this.btnAdaugaClient.Size = new System.Drawing.Size(119, 23);
             this.btnAdaugaClient.TabIndex = 1;
@@ -146,29 +149,29 @@ namespace Proiect_PAW
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dtpDataNasterii);
             this.groupBox1.Controls.Add(this.tbPrenume);
+            this.groupBox1.Controls.Add(this.btnAdaugaClient);
             this.groupBox1.Controls.Add(this.tbNume);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnAdaugaClient);
-            this.groupBox1.Location = new System.Drawing.Point(12, 444);
+            this.groupBox1.Location = new System.Drawing.Point(129, 409);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(581, 108);
+            this.groupBox1.Size = new System.Drawing.Size(550, 110);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adauga client nou";
             // 
             // tbTelefon
             // 
-            this.tbTelefon.Location = new System.Drawing.Point(359, 24);
+            this.tbTelefon.Location = new System.Drawing.Point(365, 23);
             this.tbTelefon.Name = "tbTelefon";
-            this.tbTelefon.Size = new System.Drawing.Size(188, 20);
+            this.tbTelefon.Size = new System.Drawing.Size(179, 20);
             this.tbTelefon.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(289, 27);
+            this.label4.Location = new System.Drawing.Point(295, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 8;
@@ -178,29 +181,29 @@ namespace Proiect_PAW
             // 
             this.dtpDataNasterii.CustomFormat = "dd.MM.yyyy";
             this.dtpDataNasterii.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDataNasterii.Location = new System.Drawing.Point(359, 49);
+            this.dtpDataNasterii.Location = new System.Drawing.Point(365, 49);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
-            this.dtpDataNasterii.Size = new System.Drawing.Size(188, 20);
+            this.dtpDataNasterii.Size = new System.Drawing.Size(179, 20);
             this.dtpDataNasterii.TabIndex = 8;
             // 
             // tbPrenume
             // 
             this.tbPrenume.Location = new System.Drawing.Point(85, 49);
             this.tbPrenume.Name = "tbPrenume";
-            this.tbPrenume.Size = new System.Drawing.Size(188, 20);
+            this.tbPrenume.Size = new System.Drawing.Size(179, 20);
             this.tbPrenume.TabIndex = 6;
             // 
             // tbNume
             // 
             this.tbNume.Location = new System.Drawing.Point(85, 25);
             this.tbNume.Name = "tbNume";
-            this.tbNume.Size = new System.Drawing.Size(188, 20);
+            this.tbNume.Size = new System.Drawing.Size(179, 20);
             this.tbNume.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(289, 52);
+            this.label3.Location = new System.Drawing.Point(295, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 4;
@@ -228,23 +231,46 @@ namespace Proiect_PAW
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inapoiToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // inapoiToolStripMenuItem
+            // 
+            this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Text = "Inapoi";
+            this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
+            // 
             // FormClienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 559);
+            this.ClientSize = new System.Drawing.Size(804, 531);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvClienti);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormClienti";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manager Clienti";
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -271,5 +297,7 @@ namespace Proiect_PAW
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem inapoiToolStripMenuItem;
     }
 }
