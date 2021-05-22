@@ -74,7 +74,7 @@ namespace Proiect_PAW
             // denumire
             // 
             this.denumire.Text = "Denumire";
-            this.denumire.Width = 725;
+            this.denumire.Width = 720;
             // 
             // contextMenuStrip1
             // 
@@ -171,6 +171,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "FormAparate";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

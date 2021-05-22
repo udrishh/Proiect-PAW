@@ -31,6 +31,7 @@ namespace Proiect_PAW
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.gbManagerDate = new System.Windows.Forms.GroupBox();
+            this.btnStatistici = new System.Windows.Forms.Button();
             this.btnAparate = new System.Windows.Forms.Button();
             this.btnRezervari = new System.Windows.Forms.Button();
             this.btnClienti = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@ namespace Proiect_PAW
             // 
             // gbManagerDate
             // 
+            this.gbManagerDate.Controls.Add(this.btnStatistici);
             this.gbManagerDate.Controls.Add(this.btnAparate);
             this.gbManagerDate.Controls.Add(this.btnRezervari);
             this.gbManagerDate.Controls.Add(this.btnClienti);
@@ -84,9 +86,19 @@ namespace Proiect_PAW
             this.gbManagerDate.TabStop = false;
             this.gbManagerDate.Text = "Manager de date";
             // 
+            // btnStatistici
+            // 
+            this.btnStatistici.Location = new System.Drawing.Point(17, 176);
+            this.btnStatistici.Name = "btnStatistici";
+            this.btnStatistici.Size = new System.Drawing.Size(157, 23);
+            this.btnStatistici.TabIndex = 3;
+            this.btnStatistici.Text = "&Statistici";
+            this.btnStatistici.UseVisualStyleBackColor = true;
+            this.btnStatistici.Click += new System.EventHandler(this.btnStatistici_Click);
+            // 
             // btnAparate
             // 
-            this.btnAparate.Location = new System.Drawing.Point(17, 107);
+            this.btnAparate.Location = new System.Drawing.Point(17, 59);
             this.btnAparate.Name = "btnAparate";
             this.btnAparate.Size = new System.Drawing.Size(157, 23);
             this.btnAparate.TabIndex = 2;
@@ -96,7 +108,7 @@ namespace Proiect_PAW
             // 
             // btnRezervari
             // 
-            this.btnRezervari.Location = new System.Drawing.Point(17, 136);
+            this.btnRezervari.Location = new System.Drawing.Point(17, 88);
             this.btnRezervari.Name = "btnRezervari";
             this.btnRezervari.Size = new System.Drawing.Size(157, 23);
             this.btnRezervari.TabIndex = 1;
@@ -106,7 +118,7 @@ namespace Proiect_PAW
             // 
             // btnClienti
             // 
-            this.btnClienti.Location = new System.Drawing.Point(17, 78);
+            this.btnClienti.Location = new System.Drawing.Point(17, 30);
             this.btnClienti.Name = "btnClienti";
             this.btnClienti.Size = new System.Drawing.Size(157, 23);
             this.btnClienti.TabIndex = 0;
@@ -387,6 +399,7 @@ namespace Proiect_PAW
             this.Controls.Add(this.gbManagerDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager Sala de Gimnastica";
@@ -441,6 +454,7 @@ namespace Proiect_PAW
         private System.Windows.Forms.GroupBox gbUtilizator;
         private System.Windows.Forms.Button btn;
         private System.Windows.Forms.PictureBox pictureUtilizator;
+        private System.Windows.Forms.Button btnStatistici;
     }
 }
 

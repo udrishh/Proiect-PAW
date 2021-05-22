@@ -114,6 +114,12 @@
     <Compile Include="FormRezervariEdit.Designer.cs">
       <DependentUpon>FormRezervariEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStatistici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatistici.Designer.cs">
+      <DependentUpon>FormStatistici.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRezervariEdit.resx">
       <DependentUpon>FormRezervariEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatistici.resx">
+      <DependentUpon>FormStatistici.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -169,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CustomChartLibrary\CustomChartLibrary\CustomChartLibrary.csproj">
+      <Project>{c63425f0-1909-42d2-9303-7e829c1850e5}</Project>
+      <Name>CustomChartLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />

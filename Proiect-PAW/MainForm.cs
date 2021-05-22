@@ -131,6 +131,10 @@ namespace Proiect_PAW
                                 }
                             }
                         }
+                        else
+                        {
+                            aparat2 = null;
+                        }
 
                         Rezervare rezervare = new Rezervare(data, (int)durata, aparat1, aparat2, client, (int)id);
                         rezervari.Add(rezervare);
@@ -344,5 +348,11 @@ namespace Proiect_PAW
             gbUtilizator.Visible = false;
         }
         #endregion
+
+        private void btnStatistici_Click(object sender, EventArgs e)
+        {
+            FormStatistici formStatistici = new FormStatistici(aparate, clienti, rezervari);
+            formStatistici.ShowDialog();
+        }
     }
 }

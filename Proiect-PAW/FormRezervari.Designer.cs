@@ -103,7 +103,7 @@ namespace Proiect_PAW
             // client
             // 
             this.client.Text = "Client";
-            this.client.Width = 180;
+            this.client.Width = 160;
             // 
             // aparat1
             // 
@@ -307,6 +307,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "FormRezervari";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

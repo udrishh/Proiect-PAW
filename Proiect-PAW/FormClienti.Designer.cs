@@ -83,21 +83,22 @@ namespace Proiect_PAW
             // id
             // 
             this.id.Text = "Id";
+            this.id.Width = 55;
             // 
             // nume
             // 
             this.nume.Text = "Nume";
-            this.nume.Width = 200;
+            this.nume.Width = 195;
             // 
             // prenume
             // 
             this.prenume.Text = "Prenume";
-            this.prenume.Width = 200;
+            this.prenume.Width = 195;
             // 
             // telefon
             // 
             this.telefon.Text = "Telefon";
-            this.telefon.Width = 120;
+            this.telefon.Width = 115;
             // 
             // dataNasterii
             // 
@@ -259,6 +260,7 @@ namespace Proiect_PAW
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "FormClienti";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
