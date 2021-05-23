@@ -15,14 +15,16 @@ namespace Proiect_PAW
     {
         #region Atribute
         public List<Client> clienti;
+        public List<Rezervare> rezervari;
         private readonly string connectionString = "Data Source=database.db";
         #endregion
 
         #region Metode
-        public FormClienti(List<Client> clienti)
+        public FormClienti(List<Client> clienti, List<Rezervare> rezervari)
         {
             InitializeComponent();
             this.clienti = clienti;
+            this.rezervari = rezervari;
             DisplayClienti();
         }
 
@@ -80,6 +82,32 @@ namespace Proiect_PAW
 
                 clienti.Remove(client);
             }
+        }
+
+        private void RemoveRezervare(Client client)
+        {
+            string query = "DELETE FROM Rezervari WHERE Client=@client";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@client", client.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                List<Rezervare> copieRezervari = new List<Rezervare>(rezervari);
+
+                foreach(Rezervare rezervare in copieRezervari)
+                {
+                    if(rezervare.Client == client)
+                    {
+                        rezervari.Remove(rezervare);
+                    }
+                }
+            }
+
         }
         #endregion
 
@@ -149,11 +177,12 @@ namespace Proiect_PAW
             Client client = (Client)lvItem.Tag;
 
             DialogResult result = MessageBox.Show("Sigur doriti sa stergeti clientul: " +
-                client.ToString() + " ?\nAceasta optiune este ireversibila!", "Stergere client",
+                client.ToString() + " ?\nStergand un client veti sterge si toate rezervarile efecutate de acesta.\nAceasta optiune este ireversibila!", "Stergere client",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                 RemoveClient(client);
+                RemoveRezervare(client);
                 DisplayClienti();
             }
         }

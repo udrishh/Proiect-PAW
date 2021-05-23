@@ -32,11 +32,19 @@ namespace Proiect_PAW
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatistici));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inapoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbInterval = new System.Windows.Forms.ComboBox();
             this.btnArataStatistici = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.printToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.chartRezervari = new CustomChartLibrary.ChartControl();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -45,7 +53,8 @@ namespace Proiect_PAW
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inapoiToolStripMenuItem});
+            this.inapoiToolStripMenuItem,
+            this.printToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(912, 24);
@@ -58,6 +67,16 @@ namespace Proiect_PAW
             this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.inapoiToolStripMenuItem.Text = "Inapoi";
             this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printToolStripMenuItem1,
+            this.printPreviewToolStripMenuItem,
+            this.printSetupToolStripMenuItem});
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.printToolStripMenuItem.Text = "File";
             // 
             // groupBox1
             // 
@@ -109,6 +128,52 @@ namespace Proiect_PAW
             this.label.TabIndex = 5;
             this.label.Text = "Niciun interval nu a fost selectat!";
             // 
+            // printToolStripMenuItem1
+            // 
+            this.printToolStripMenuItem1.Name = "printToolStripMenuItem1";
+            this.printToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.printToolStripMenuItem1.Text = "Print";
+            this.printToolStripMenuItem1.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.printPreviewToolStripMenuItem.Text = "Print Preview";
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
+            // 
+            // printSetupToolStripMenuItem
+            // 
+            this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
+            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.printSetupToolStripMenuItem.Text = "Print Setup";
+            this.printSetupToolStripMenuItem.Click += new System.EventHandler(this.printSetupToolStripMenuItem_Click);
+            // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Document = this.printDocument;
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
+            // 
+            // printDialog
+            // 
+            this.printDialog.Document = this.printDocument;
+            this.printDialog.UseEXDialog = true;
+            // 
+            // pageSetupDialog
+            // 
+            this.pageSetupDialog.AllowOrientation = false;
+            this.pageSetupDialog.Document = this.printDocument;
+            // 
             // chartRezervari
             // 
             this.chartRezervari.Data = null;
@@ -155,5 +220,13 @@ namespace Proiect_PAW
         private System.Windows.Forms.Button btnArataStatistici;
         private System.Windows.Forms.Label label;
         private CustomChartLibrary.ChartControl chartRezervari;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printSetupToolStripMenuItem;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
+        private System.Windows.Forms.PrintDialog printDialog;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog;
     }
 }

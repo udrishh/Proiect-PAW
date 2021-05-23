@@ -15,14 +15,16 @@ namespace Proiect_PAW
     {
         #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
+        private List<Rezervare> rezervari = new List<Rezervare>();
         private readonly string connectionString = "Data Source=database.db";
         #endregion
 
         #region Metode
-        public FormAparate(List<Aparat> aparate)
+        public FormAparate(List<Aparat> aparate, List<Rezervare> rezervari)
         {
             InitializeComponent();
             this.aparate = aparate;
+            this.rezervari = rezervari;
             DisplayAparate();
         }
 
@@ -74,6 +76,38 @@ namespace Proiect_PAW
                 aparate.Remove(aparat);
             }
         }
+
+        private void RemoveRezervare(Aparat aparat)
+        {
+            string query = "DELETE FROM Rezervari WHERE Aparat1=@id or Aparat2=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", aparat.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                List<Rezervare> copieRezervari = new List<Rezervare>(rezervari);
+
+                foreach (Rezervare rezervare in copieRezervari)
+                {
+                    if (rezervare.Aparat1 == aparat)
+                    {
+                        rezervari.Remove(rezervare);
+                    }
+                    else if(rezervare.Aparat2 != null)
+                    {
+                        if (rezervare.Aparat2 == aparat)
+                        {
+                            rezervari.Remove(rezervare);
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Evenimente
@@ -108,11 +142,12 @@ namespace Proiect_PAW
             Aparat aparat = (Aparat)lvItem.Tag;
 
             DialogResult result = MessageBox.Show("Sigur doriti sa stergeti aparatul: " +
-                aparat.ToString()+ " ?\nAceasta optiune este ireversibila!" , "Stergere aparat",
+                aparat.ToString()+ " ?\nStergand un aparat veti sterge si toate rezervarile pentru acesta.\nAceasta optiune este ireversibila!" , "Stergere aparat",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if(result == DialogResult.Yes)
             {
                 RemoveAparat(aparat);
+                RemoveRezervare(aparat);
                 DisplayAparate();
             }
         }

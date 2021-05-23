@@ -147,7 +147,7 @@ namespace Proiect_PAW
         #region Evenimente
         private void btnAparate_Click(object sender, EventArgs e)
         {
-            FormAparate formAparate = new FormAparate(aparate);
+            FormAparate formAparate = new FormAparate(aparate, rezervari);
             formAparate.ShowDialog();
         }
 
@@ -160,7 +160,7 @@ namespace Proiect_PAW
 
         private void btnClienti_Click(object sender, EventArgs e)
         {
-            FormClienti formClienti = new FormClienti(clienti);
+            FormClienti formClienti = new FormClienti(clienti,rezervari);
             formClienti.ShowDialog();
         }
 

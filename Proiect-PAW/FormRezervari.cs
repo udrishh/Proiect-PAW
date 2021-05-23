@@ -226,7 +226,7 @@ namespace Proiect_PAW
 
         private void btnNou_Click(object sender, EventArgs e)
         {
-            FormClienti formClienti = new FormClienti(clienti);
+            FormClienti formClienti = new FormClienti(clienti, rezervari);
             formClienti.ShowDialog();
 
             BindingList<Client> clientiComboBox = new BindingList<Client>(clienti);
