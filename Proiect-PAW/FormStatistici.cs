@@ -79,6 +79,7 @@ namespace Proiect_PAW
 
                 chartRezervari.Data = data;
                 chartRezervari.Invalidate();
+                btnCopy.Visible = true;
             }
             else if (cbInterval.SelectedIndex == 1)
             {
@@ -160,6 +161,7 @@ namespace Proiect_PAW
                 chartRezervari.Data = data;
                 chartRezervari.Invalidate();
             }
+            btnCopy.Visible = true;
         }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -350,6 +352,11 @@ namespace Proiect_PAW
             {
                 printDocument.DefaultPageSettings = pageSetupDialog.PageSettings;
             }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label.Text);
         }
     }
 }

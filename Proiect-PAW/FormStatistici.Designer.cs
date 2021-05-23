@@ -33,19 +33,20 @@ namespace Proiect_PAW
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inapoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chartRezervari = new CustomChartLibrary.ChartControl();
             this.label1 = new System.Windows.Forms.Label();
             this.cbInterval = new System.Windows.Forms.ComboBox();
             this.btnArataStatistici = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
-            this.printToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
-            this.chartRezervari = new CustomChartLibrary.ChartControl();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +79,27 @@ namespace Proiect_PAW
             this.printToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.printToolStripMenuItem.Text = "File";
             // 
+            // printToolStripMenuItem1
+            // 
+            this.printToolStripMenuItem1.Name = "printToolStripMenuItem1";
+            this.printToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.printToolStripMenuItem1.Text = "Print";
+            this.printToolStripMenuItem1.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.printPreviewToolStripMenuItem.Text = "Print Preview";
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
+            // 
+            // printSetupToolStripMenuItem
+            // 
+            this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
+            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.printSetupToolStripMenuItem.Text = "Print Setup";
+            this.printSetupToolStripMenuItem.Click += new System.EventHandler(this.printSetupToolStripMenuItem_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chartRezervari);
@@ -87,6 +109,15 @@ namespace Proiect_PAW
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Numar de rezervari efectuate zilnic pentru intervalul ales: ";
+            // 
+            // chartRezervari
+            // 
+            this.chartRezervari.Data = null;
+            this.chartRezervari.Location = new System.Drawing.Point(6, 19);
+            this.chartRezervari.Name = "chartRezervari";
+            this.chartRezervari.Size = new System.Drawing.Size(876, 499);
+            this.chartRezervari.TabIndex = 1;
+            this.chartRezervari.Text = "chartControl1";
             // 
             // label1
             // 
@@ -99,6 +130,7 @@ namespace Proiect_PAW
             // 
             // cbInterval
             // 
+            this.cbInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
             "Ultima saptamana",
@@ -128,27 +160,6 @@ namespace Proiect_PAW
             this.label.TabIndex = 5;
             this.label.Text = "Niciun interval nu a fost selectat!";
             // 
-            // printToolStripMenuItem1
-            // 
-            this.printToolStripMenuItem1.Name = "printToolStripMenuItem1";
-            this.printToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.printToolStripMenuItem1.Text = "Print";
-            this.printToolStripMenuItem1.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
-            // 
-            // printPreviewToolStripMenuItem
-            // 
-            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.printPreviewToolStripMenuItem.Text = "Print Preview";
-            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
-            // 
-            // printSetupToolStripMenuItem
-            // 
-            this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
-            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.printSetupToolStripMenuItem.Text = "Print Setup";
-            this.printSetupToolStripMenuItem.Click += new System.EventHandler(this.printSetupToolStripMenuItem_Click);
-            // 
             // printDocument
             // 
             this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
@@ -174,20 +185,23 @@ namespace Proiect_PAW
             this.pageSetupDialog.AllowOrientation = false;
             this.pageSetupDialog.Document = this.printDocument;
             // 
-            // chartRezervari
+            // btnCopy
             // 
-            this.chartRezervari.Data = null;
-            this.chartRezervari.Location = new System.Drawing.Point(6, 19);
-            this.chartRezervari.Name = "chartRezervari";
-            this.chartRezervari.Size = new System.Drawing.Size(876, 499);
-            this.chartRezervari.TabIndex = 1;
-            this.chartRezervari.Text = "chartControl1";
+            this.btnCopy.Location = new System.Drawing.Point(763, 600);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(137, 21);
+            this.btnCopy.TabIndex = 6;
+            this.btnCopy.Text = "Copy text to Clipboard";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Visible = false;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // FormStatistici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 625);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.label);
             this.Controls.Add(this.btnArataStatistici);
             this.Controls.Add(this.cbInterval);
@@ -228,5 +242,6 @@ namespace Proiect_PAW
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.PrintDialog printDialog;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog;
+        private System.Windows.Forms.Button btnCopy;
     }
 }
