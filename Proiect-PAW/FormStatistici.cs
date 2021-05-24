@@ -9,9 +9,13 @@ namespace Proiect_PAW
 {
     public partial class FormStatistici : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
         private List<Rezervare> rezervari = new List<Rezervare>();
+        #endregion
+
+        #region Evenimente
         public FormStatistici(List<Aparat> aparate, List<Client> clienti, List<Rezervare> rezervari)
         {
             InitializeComponent();
@@ -31,7 +35,6 @@ namespace Proiect_PAW
             DateTime endDate = DateTime.Now;
             BindingList<Rezervare> copieRezervari = new BindingList<Rezervare>();
             BindingList<Rezervare> rezervariInterval = new BindingList<Rezervare>();
-
             List<DateTime> zile = new List<DateTime>();
             List<int> nrRezervari = new List<int>();
 
@@ -51,7 +54,6 @@ namespace Proiect_PAW
                         rezervariInterval.Add(rezervare);
                     }
                 }
-
                 DateTime indexData = startDate.Date;
                 for (int i = 0; i < 7; i++)
                 {
@@ -68,9 +70,7 @@ namespace Proiect_PAW
                     }
                     nrRezervari.Add(nr);
                 }
-
                 label.Text = "In intervalul " + startDate.Date.ToString("dd.MM.yyyy") + " - " + endDate.Date.ToString("dd.MM.yyyy") + " au fost efectuate " + totalRezervari + " rezervari.";
-
                 ChartValue[] data = new ChartValue[zile.Count];
                 for (int i = 0; i < zile.Count; i++)
                 {
@@ -92,7 +92,6 @@ namespace Proiect_PAW
                         rezervariInterval.Add(rezervare);
                     }
                 }
-
                 DateTime indexData = startDate.Date;
                 for (int i = 0; i < 14; i++)
                 {
@@ -109,15 +108,12 @@ namespace Proiect_PAW
                     }
                     nrRezervari.Add(nr);
                 }
-
                 label.Text = "In intervalul " + startDate.Date.ToString("dd.MM.yyyy") + " - " + endDate.Date.ToString("dd.MM.yyyy") + " au fost efectuate " + totalRezervari + " rezervari.";
-
                 ChartValue[] data = new ChartValue[zile.Count];
                 for (int i = 0; i < zile.Count; i++)
                 {
                     data[i] = new ChartValue(zile[i].ToString("dd.MMM"), nrRezervari[i]);
                 }
-
                 chartRezervari.Data = data;
                 chartRezervari.Invalidate();
             }
@@ -132,7 +128,6 @@ namespace Proiect_PAW
                         rezervariInterval.Add(rezervare);
                     }
                 }
-
                 DateTime indexData = startDate.Date;
                 for (int i = 0; i < 7; i++)
                 {
@@ -149,15 +144,12 @@ namespace Proiect_PAW
                     }
                     nrRezervari.Add(nr);
                 }
-
                 label.Text = "In intervalul " + startDate.Date.ToString("dd.MM.yyyy") + " - " + endDate.Date.ToString("dd.MM.yyyy") + " au fost efectuate " + totalRezervari + " rezervari.";
-
                 ChartValue[] data = new ChartValue[zile.Count];
                 for (int i = 0; i < zile.Count; i++)
                 {
                     data[i] = new ChartValue(zile[i].ToString("dd.MMM"), nrRezervari[i]);
                 }
-
                 chartRezervari.Data = data;
                 chartRezervari.Invalidate();
             }
@@ -170,7 +162,6 @@ namespace Proiect_PAW
             DateTime endDate = DateTime.Now;
             BindingList<Rezervare> copieRezervari = new BindingList<Rezervare>();
             BindingList<Rezervare> rezervariInterval = new BindingList<Rezervare>();
-
             List<DateTime> zile = new List<DateTime>();
             List<int> nrRezervari = new List<int>();
 
@@ -178,7 +169,6 @@ namespace Proiect_PAW
             {
                 copieRezervari.Add(rezervare);
             }
-
             int totalRezervari = 0;
             startDate = DateTime.Now.AddDays(-6);
             foreach (Rezervare rezervare in copieRezervari)
@@ -188,7 +178,6 @@ namespace Proiect_PAW
                     rezervariInterval.Add(rezervare);
                 }
             }
-
             DateTime indexData = startDate.Date;
             for (int i = 0; i < 7; i++)
             {
@@ -205,9 +194,7 @@ namespace Proiect_PAW
                 }
                 nrRezervari.Add(nr);
             }
-
             label.Text = "In intervalul " + startDate.Date.ToString("dd.MM.yyyy") + " - " + endDate.Date.ToString("dd.MM.yyyy") + " au fost efectuate " + totalRezervari + " rezervari.";
-
             ChartValue[] data = new ChartValue[zile.Count];
             for (int i = 0; i < zile.Count; i++)
             {
@@ -219,7 +206,6 @@ namespace Proiect_PAW
 
             var printAreaHight = e.MarginBounds.Height;
             var printAreaWidth = e.MarginBounds.Width;
-
             var marginLeft = e.MarginBounds.Left;
             var marginTop = e.MarginBounds.Top;
 
@@ -235,9 +221,7 @@ namespace Proiect_PAW
             }
             var maxValue = nrRezervariMax;
             var scalingFactor = maxDotHeight / maxValue;
-
             Point lastPoint = new Point(0, 0);
-
             e.Graphics.FillRectangle(
                     Brushes.LightGray,
                     marginLeft,
@@ -245,7 +229,6 @@ namespace Proiect_PAW
                     printAreaWidth,
                     printAreaHight
                     );
-
             for (int i = 0; i < nrRezervari.Count; i++)
             {
                 var laneWidth = (float)maxDotWidth;
@@ -255,13 +238,10 @@ namespace Proiect_PAW
                     new Point((int)(marginLeft + 25 + i * laneWidth), marginTop)
                 );
             }
-
             for (int i = 0; i < nrRezervari.Count; i++)
             {
-
                 var laneHeight = (float)scalingFactor * nrRezervari[i];
                 var laneWidth = (float)maxDotWidth;
-
                 if (i > 0)
                 {
                     e.Graphics.DrawLine(
@@ -271,7 +251,6 @@ namespace Proiect_PAW
                     );
                 }
                 lastPoint = new Point((int)(marginLeft + 25 + i * laneWidth), marginTop + (int)(maxDotHeight - laneHeight + 10));
-
                 e.Graphics.DrawString(
                     zile[i].ToString("dd.MMM"),
                     new Font(FontFamily.GenericSerif, 10, FontStyle.Bold),
@@ -279,7 +258,6 @@ namespace Proiect_PAW
                     new RectangleF(marginLeft + 10 + i * laneWidth, marginTop + printAreaHight - 70, 50, 50)
                     );
             }
-
             for (int i = 0; i < nrRezervari.Count; i++)
             {
                 var laneHeight = (float)scalingFactor * nrRezervari[i];
@@ -299,15 +277,12 @@ namespace Proiect_PAW
                     new RectangleF(marginLeft + 18 + i * laneWidth, marginTop + (float)maxDotHeight - laneHeight + 2, 50, 50)
                     );
             }
-
             e.Graphics.DrawString(
                     "Grafic cu numarul de rezervari din fiecare zi pentru saptamana trecuta", 
                     new Font(FontFamily.GenericSerif, 20, FontStyle.Bold),
                     Brushes.Black,
                     new RectangleF(marginLeft + 50, marginTop + printAreaHight - 50, 1000, 1000)
                     );
-            
-
             e.Graphics.DrawString(
                     "Grafic cu numarul de rezervari din fiecare zi pentru saptamana trecuta",
                     new Font(FontFamily.GenericSerif, 20, FontStyle.Bold),
@@ -343,5 +318,6 @@ namespace Proiect_PAW
         {
             Clipboard.SetText(label.Text);
         }
+        #endregion
     }
 }

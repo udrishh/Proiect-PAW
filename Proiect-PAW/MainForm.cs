@@ -1,14 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -31,7 +25,6 @@ namespace Proiect_PAW
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
         }
-
         private void LoadAparate()
         {
             string query = "SELECT * FROM Aparate";
@@ -54,7 +47,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void LoadClienti()
         {
             string query = "SELECT * FROM Clienti";
@@ -81,7 +73,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void LoadRezervari()
         {
             string query = "SELECT * FROM Rezervari";
@@ -150,33 +141,28 @@ namespace Proiect_PAW
             FormAparate formAparate = new FormAparate(aparate, rezervari);
             formAparate.ShowDialog();
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadAparate();
             LoadClienti();
             LoadRezervari();
         }
-
         private void btnClienti_Click(object sender, EventArgs e)
         {
             FormClienti formClienti = new FormClienti(clienti,rezervari);
             formClienti.ShowDialog();
         }
-
         private void MainForm_Activated(object sender, EventArgs e)
         {
             labelClienti.Text = "Clienti: " + clienti.Count;
             labelAparate.Text = "Aparate: " + aparate.Count;
             labelRezervari.Text = "Rezervari: " + rezervari.Count;
         }
-
         private void btnRezervari_Click(object sender, EventArgs e)
         {
             FormRezervari formRezervari = new FormRezervari(rezervari, aparate, clienti);
             formRezervari.ShowDialog();
         }
-
         private void aparateBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -191,7 +177,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void clientiBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -206,7 +191,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void RezervariBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -221,7 +205,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void aparateXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -236,7 +219,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void clientiXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -251,7 +233,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void rezervariXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -266,7 +247,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void aparateCsv_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -284,7 +264,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void cleintiCSV_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -302,7 +281,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void rezervariCsv_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -320,7 +298,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void btnAutentificare_Click(object sender, EventArgs e)
         {
             if((tbUtilizator.Text == "admin" && tbParola.Text == "admin") || (tbUtilizator.Text == "Bogdan" && tbParola.Text == "pass"))
@@ -339,7 +316,6 @@ namespace Proiect_PAW
                 tbParola.Clear();
             }
         }
-
         private void btn_Click(object sender, EventArgs e)
         {
             gbAutentificare.Visible = true;
@@ -347,12 +323,11 @@ namespace Proiect_PAW
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
         }
-        #endregion
-
         private void btnStatistici_Click(object sender, EventArgs e)
         {
             FormStatistici formStatistici = new FormStatistici(aparate, clienti, rezervari);
             formStatistici.ShowDialog();
         }
+        #endregion
     }
 }

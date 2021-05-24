@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
@@ -30,19 +26,16 @@ namespace Proiect_PAW
             DataNasterii = dataNasterii;
             NrRezervari = nrRezervari;
         }
-
         public Client()
         {
         }
         #endregion
 
         #region Metode
-
         public override string ToString()
         {
             return Id + " - " + Nume + " " + Prenume;
         }
-
         public int CompareTo(Client other)
         {
             return Id.CompareTo(other.Id);

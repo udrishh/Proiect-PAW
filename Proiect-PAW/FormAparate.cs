@@ -1,12 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
@@ -27,7 +21,6 @@ namespace Proiect_PAW
             this.rezervari = rezervari;
             DisplayAparate();
         }
-
         public void DisplayAparate()
         {
             aparate.Sort();
@@ -42,7 +35,6 @@ namespace Proiect_PAW
                 lvAparate.Items.Add(lvItem);
             }
         }
-
         private void AddAparat(Aparat aparat)
         {
             string query = "INSERT INTO Aparate(Denumire) VALUES(@denumire); SELECT last_insert_rowid()";
@@ -59,7 +51,6 @@ namespace Proiect_PAW
                 aparate.Add(aparat);
             }
         }
-
         private void RemoveAparat(Aparat aparat)
         {
             string query = "DELETE FROM Aparate WHERE Id=@id";
@@ -76,7 +67,6 @@ namespace Proiect_PAW
                 aparate.Remove(aparat);
             }
         }
-
         private void RemoveRezervare(Aparat aparat)
         {
             string query = "DELETE FROM Rezervari WHERE Aparat1=@id or Aparat2=@id";
@@ -129,7 +119,6 @@ namespace Proiect_PAW
                 errorProvider.SetError(tbDenumire, "Denumire invalida!");
             }  
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(lvAparate.SelectedItems.Count == 0)
@@ -151,7 +140,6 @@ namespace Proiect_PAW
                 DisplayAparate();
             }
         }
-
         private void tbDenumire_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -159,7 +147,6 @@ namespace Proiect_PAW
                 btnAdaugaAparat_Click(sender, null);
             }
         }
-
         private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvAparate.SelectedItems.Count == 0)
@@ -177,11 +164,10 @@ namespace Proiect_PAW
                 DisplayAparate();
             }
         }
-        #endregion
-
         private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion
     }
 }

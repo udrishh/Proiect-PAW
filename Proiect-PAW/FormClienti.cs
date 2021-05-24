@@ -1,12 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
@@ -27,7 +21,6 @@ namespace Proiect_PAW
             this.rezervari = rezervari;
             DisplayClienti();
         }
-
         void DisplayClienti()
         {
             clienti.Sort();
@@ -45,7 +38,6 @@ namespace Proiect_PAW
                 lvClienti.Items.Add(lvItem);
             }
         }
-
         void AddClient(Client client)
         {
             string query = "INSERT INTO Clienti(Nume, Prenume, Telefon, DataNasterii, NrRezervari) VALUES(@nume, @prenume, @telefon, @dataNasterii, @nrRezervari); SELECT last_insert_rowid()";
@@ -66,7 +58,6 @@ namespace Proiect_PAW
                 clienti.Add(client);
             }
         }
-        
         void RemoveClient(Client client)
         {
             string query = "DELETE FROM Clienti WHERE Id=@id";
@@ -83,7 +74,6 @@ namespace Proiect_PAW
                 clienti.Remove(client);
             }
         }
-
         private void RemoveRezervare(Client client)
         {
             string query = "DELETE FROM Rezervari WHERE Client=@client";
@@ -164,7 +154,6 @@ namespace Proiect_PAW
             tbTelefon.Clear();
             dtpDataNasterii.ResetText();
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvClienti.SelectedItems.Count == 0)
@@ -186,7 +175,6 @@ namespace Proiect_PAW
                 DisplayClienti();
             }
         }
-
         private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvClienti.SelectedItems.Count == 0)
@@ -204,11 +192,10 @@ namespace Proiect_PAW
                 DisplayClienti();
             }
         }
-        #endregion
-
         private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion
     }
 }

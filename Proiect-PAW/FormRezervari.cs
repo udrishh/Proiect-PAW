@@ -2,11 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
@@ -44,7 +39,6 @@ namespace Proiect_PAW
 
             DisplayRezervari();
         }
-
         private void DisplayRezervari()
         {
             rezervari.Sort();
@@ -64,7 +58,6 @@ namespace Proiect_PAW
                 lvRezervari.Items.Add(lvItem);
             }
         }
-        
         private void AddRezervare(Rezervare rezervare)
         {
             string query = "INSERT INTO Rezervari(Data, Durata, Client, Aparat1, Aparat2) VALUES(@data, @durata, @client, @aparat1, @aparat2); SELECT last_insert_rowid()";
@@ -89,11 +82,9 @@ namespace Proiect_PAW
                 long id = (long)command.ExecuteScalar();
                 rezervare.Id = (int)id;
 
-
                 rezervari.Add(rezervare);
             }
 
-            //rezervare.Client.NrRezervari++;
             string query2 = "UPDATE Clienti SET NrRezervari=NrRezervari+1 WHERE Id=@id";
 
             using(SqliteConnection connection = new SqliteConnection(connectionString))
@@ -102,12 +93,9 @@ namespace Proiect_PAW
                 command.Parameters.AddWithValue("@id", rezervare.Client.Id);
 
                 connection.Open();
-
                 command.ExecuteNonQuery();
             }
-
         }
-
         private void RemoveRezervare(Rezervare rezervare)
         {
             string query = "DELETE FROM Rezervari WHERE Id=@id";
@@ -118,7 +106,6 @@ namespace Proiect_PAW
                 command.Parameters.AddWithValue("@id", rezervare.Id);
 
                 connection.Open();
-
                 command.ExecuteNonQuery();
 
                 rezervari.Remove(rezervare);
@@ -133,7 +120,6 @@ namespace Proiect_PAW
                 command.Parameters.AddWithValue("@id", rezervare.Client.Id);
 
                 connection.Open();
-
                 command.ExecuteNonQuery();
             }
         }
@@ -223,7 +209,6 @@ namespace Proiect_PAW
             DisplayRezervari();
             rezervare.Client.NrRezervari++;
         }
-
         private void btnNou_Click(object sender, EventArgs e)
         {
             FormClienti formClienti = new FormClienti(clienti, rezervari);
@@ -233,7 +218,6 @@ namespace Proiect_PAW
             cbClienti.DataSource = clientiComboBox;
             cbClienti.SelectedIndex = -1;
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(lvRezervari.SelectedItems.Count == 0)
@@ -292,12 +276,10 @@ namespace Proiect_PAW
                 DisplayRezervari();
             }
         }
-        #endregion
-
         private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
-    }
-    
+        #endregion
+    } 
 }

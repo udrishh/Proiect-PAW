@@ -2,11 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
@@ -35,7 +30,6 @@ namespace Proiect_PAW
             this.index2 = index2;
             
         }
-
         private void UpdateRezervare(Rezervare rezervare)
         {
             string query = "UPDATE Rezervari SET Data=@data, Durata=@durata, Client=@client, Aparat1=@aparat1, Aparat2=@aparat2 WHERE Id=@id";
@@ -80,7 +74,6 @@ namespace Proiect_PAW
                 cbAparat2.SelectedIndex = -1;
             }
         }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             rezervare.Data = dtpData.Value;
@@ -90,10 +83,8 @@ namespace Proiect_PAW
             {
                 rezervare.Aparat2 = (Aparat)cbAparat2.SelectedItem;
             }
-
             UpdateRezervare(rezervare);
         }
-
         private void dtpData_Validating(object sender, CancelEventArgs e)
         {
             if(dtpData.Value < DateTime.Now)
@@ -102,12 +93,10 @@ namespace Proiect_PAW
                 e.Cancel = true;
             }
         }
-
         private void dtpData_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(dtpData, null);
         }
-
         private void cbDurata_Validating(object sender, CancelEventArgs e)
         {
             if(cbDurata.SelectedItem == null)
@@ -116,12 +105,10 @@ namespace Proiect_PAW
                 e.Cancel = true;
             }
         }
-
         private void cbDurata_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(cbDurata, null);
         }
-
         private void cbAparat1_Validating(object sender, CancelEventArgs e)
         {
             if(cbAparat1.SelectedItem == null)
@@ -139,12 +126,10 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void cbAparat1_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(cbAparat1, null);
         }
-
         private void cbAparat2_Validating(object sender, CancelEventArgs e)
         {
             if(cbAparat2.SelectedItem.ToString() == cbAparat1.SelectedItem.ToString())
@@ -162,7 +147,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void cbAparat2_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(cbAparat2, null);
