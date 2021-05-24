@@ -69,6 +69,7 @@ namespace Proiect_PAW
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOk.Location = new System.Drawing.Point(348, 80);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(106, 23);
@@ -89,6 +90,7 @@ namespace Proiect_PAW
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Location = new System.Drawing.Point(289, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
@@ -97,7 +99,7 @@ namespace Proiect_PAW
             // 
             // dtpDataNasterii
             // 
-            this.dtpDataNasterii.CustomFormat = "dd MMMM yyyy  -  HH:mm";
+            this.dtpDataNasterii.CustomFormat = "dd.MM.yyyy";
             this.dtpDataNasterii.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataNasterii.Location = new System.Drawing.Point(359, 49);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
@@ -127,6 +129,7 @@ namespace Proiect_PAW
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Location = new System.Drawing.Point(289, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
@@ -136,6 +139,7 @@ namespace Proiect_PAW
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Location = new System.Drawing.Point(15, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
@@ -145,6 +149,7 @@ namespace Proiect_PAW
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Location = new System.Drawing.Point(15, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
@@ -154,6 +159,7 @@ namespace Proiect_PAW
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(460, 80);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 23);
@@ -173,6 +179,7 @@ namespace Proiect_PAW
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormClientiEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Actualizare date client";

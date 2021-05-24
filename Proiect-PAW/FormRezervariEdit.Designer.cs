@@ -69,6 +69,7 @@ namespace Proiect_PAW
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(264, 80);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 23);
@@ -79,6 +80,7 @@ namespace Proiect_PAW
             // cbAparat2
             // 
             this.cbAparat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAparat2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat2.FormattingEnabled = true;
             this.cbAparat2.Location = new System.Drawing.Point(355, 48);
             this.cbAparat2.Name = "cbAparat2";
@@ -90,6 +92,7 @@ namespace Proiect_PAW
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label5.Location = new System.Drawing.Point(302, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
@@ -99,6 +102,7 @@ namespace Proiect_PAW
             // cbAparat1
             // 
             this.cbAparat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAparat1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat1.FormattingEnabled = true;
             this.cbAparat1.Location = new System.Drawing.Point(355, 21);
             this.cbAparat1.Name = "cbAparat1";
@@ -110,6 +114,7 @@ namespace Proiect_PAW
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Location = new System.Drawing.Point(302, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
@@ -119,6 +124,7 @@ namespace Proiect_PAW
             // cbDurata
             // 
             this.cbDurata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDurata.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbDurata.FormattingEnabled = true;
             this.cbDurata.Items.AddRange(new object[] {
             "1",
@@ -134,7 +140,7 @@ namespace Proiect_PAW
             // 
             // dtpData
             // 
-            this.dtpData.CustomFormat = "dd MMMM yyyy  -  HH:mm";
+            this.dtpData.CustomFormat = "dd.MM.yyyy  -  HH:mm";
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(45, 20);
             this.dtpData.Name = "dtpData";
@@ -146,6 +152,7 @@ namespace Proiect_PAW
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Location = new System.Drawing.Point(6, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
@@ -155,6 +162,7 @@ namespace Proiect_PAW
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Location = new System.Drawing.Point(6, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
@@ -164,6 +172,7 @@ namespace Proiect_PAW
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOk.Location = new System.Drawing.Point(148, 80);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(110, 23);

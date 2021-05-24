@@ -1,30 +1,31 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
 {
     public partial class FormAparate : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
-        public FormAparate(List<Aparat> aparate)
+        private List<Rezervare> rezervari = new List<Rezervare>();
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
+        public FormAparate(List<Aparat> aparate, List<Rezervare> rezervari)
         {
             InitializeComponent();
             this.aparate = aparate;
+            this.rezervari = rezervari;
             DisplayAparate();
         }
-
         public void DisplayAparate()
         {
             aparate.Sort();
             lvAparate.Items.Clear();
-            foreach(Aparat aparat in aparate)
+            foreach (Aparat aparat in aparate)
             {
                 ListViewItem lvItem = new ListViewItem(aparat.Id.ToString());
                 lvItem.SubItems.Add(aparat.Denumire);
@@ -34,7 +35,72 @@ namespace Proiect_PAW
                 lvAparate.Items.Add(lvItem);
             }
         }
+        private void AddAparat(Aparat aparat)
+        {
+            string query = "INSERT INTO Aparate(Denumire) VALUES(@denumire); SELECT last_insert_rowid()";
 
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@denumire", aparat.Denumire);
+
+                connection.Open();
+                long id = (long)command.ExecuteScalar();
+                aparat.Id = (int)id;
+
+                aparate.Add(aparat);
+            }
+        }
+        private void RemoveAparat(Aparat aparat)
+        {
+            string query = "DELETE FROM Aparate WHERE Id=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", aparat.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                aparate.Remove(aparat);
+            }
+        }
+        private void RemoveRezervare(Aparat aparat)
+        {
+            string query = "DELETE FROM Rezervari WHERE Aparat1=@id or Aparat2=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", aparat.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                List<Rezervare> copieRezervari = new List<Rezervare>(rezervari);
+
+                foreach (Rezervare rezervare in copieRezervari)
+                {
+                    if (rezervare.Aparat1 == aparat)
+                    {
+                        rezervari.Remove(rezervare);
+                    }
+                    else if(rezervare.Aparat2 != null)
+                    {
+                        if (rezervare.Aparat2 == aparat)
+                        {
+                            rezervari.Remove(rezervare);
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAdaugaAparat_Click(object sender, EventArgs e)
         {
             Aparat aparat = new Aparat();
@@ -43,31 +109,16 @@ namespace Proiect_PAW
 
             if(aparat.Denumire.Length > 3)
             {
-                //determinare id
-                foreach (Aparat aparatExistent in aparate)
-                {
-                    if (aparat.Id == aparatExistent.Id)
-                    {
-                        aparat.Id++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
                 errorProvider.SetError(tbDenumire,null);
-                aparate.Add(aparat);
+                AddAparat(aparat);
                 tbDenumire.ResetText();
                 DisplayAparate();
             }
             else
             {
                 errorProvider.SetError(tbDenumire, "Denumire invalida!");
-            }
-            
+            }  
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(lvAparate.SelectedItems.Count == 0)
@@ -80,15 +131,15 @@ namespace Proiect_PAW
             Aparat aparat = (Aparat)lvItem.Tag;
 
             DialogResult result = MessageBox.Show("Sigur doriti sa stergeti aparatul: " +
-                aparat.ToString()+ " ?\nAceasta optiune este ireversibila!" , "Stergere aparat",
+                aparat.ToString()+ " ?\nStergand un aparat veti sterge si toate rezervarile pentru acesta.\nAceasta optiune este ireversibila!" , "Stergere aparat",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if(result == DialogResult.Yes)
             {
-                aparate.Remove(aparat);
+                RemoveAparat(aparat);
+                RemoveRezervare(aparat);
                 DisplayAparate();
             }
         }
-
         private void tbDenumire_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -96,7 +147,6 @@ namespace Proiect_PAW
                 btnAdaugaAparat_Click(sender, null);
             }
         }
-
         private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvAparate.SelectedItems.Count == 0)
@@ -114,5 +164,10 @@ namespace Proiect_PAW
                 DisplayAparate();
             }
         }
+        private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
     }
 }

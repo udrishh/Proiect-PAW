@@ -1,13 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -15,9 +10,14 @@ namespace Proiect_PAW
 {
     public partial class MainForm : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
         private List<Rezervare> rezervari = new List<Rezervare>();
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
         public MainForm()
         {
             InitializeComponent();
@@ -25,76 +25,144 @@ namespace Proiect_PAW
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
         }
+        private void LoadAparate()
+        {
+            string query = "SELECT * FROM Aparate";
 
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        string denumire = (string)reader["Denumire"];
+
+                        Aparat aparat = new Aparat(denumire, (int)id);
+                        aparate.Add(aparat);
+                    }
+                }
+            }
+        }
+        private void LoadClienti()
+        {
+            string query = "SELECT * FROM Clienti";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        string nume = (string)reader["Nume"];
+                        string prenume = (string)reader["Prenume"];
+                        string telefon = (string)reader["Telefon"];
+                        DateTime dataNasterii = DateTime.Parse((string)reader["DataNasterii"]);
+                        long nrRezervari = (long)reader["NrRezervari"];
+
+                        Client client = new Client((int)id, nume, prenume, telefon, dataNasterii, (int)nrRezervari);
+                        clienti.Add(client);
+                    }
+                }
+            }
+        }
+        private void LoadRezervari()
+        {
+            string query = "SELECT * FROM Rezervari";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+
+                connection.Open();
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        long id = (long)reader["Id"];
+                        DateTime data = DateTime.Parse((string)reader["Data"]);
+                        long durata = (long)reader["Durata"];
+                        long idClient = (long)reader["Client"];
+                        long idAparat1 = (long)reader["Aparat1"];
+                        long idAparat2 = (long)reader["Aparat2"];
+
+                        Client client = null;
+                        foreach(Client clientAux in clienti)
+                        {
+                            if(clientAux.Id == idClient)
+                            {
+                                client = clientAux;
+                            }
+                        }
+
+                        Aparat aparat1 = null;
+                        foreach (Aparat aparatAux in aparate)
+                        {
+                            if (aparatAux.Id == idAparat1)
+                            {
+                                aparat1 = aparatAux;
+                            }
+                        }
+
+                        Aparat aparat2 = null;
+                        if (idAparat2 != 0)
+                        {
+                            foreach (Aparat aparatAux in aparate)
+                            {
+                                if (aparatAux.Id == idAparat1)
+                                {
+                                    aparat2 = aparatAux;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            aparat2 = null;
+                        }
+
+                        Rezervare rezervare = new Rezervare(data, (int)durata, aparat1, aparat2, client, (int)id);
+                        rezervari.Add(rezervare);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAparate_Click(object sender, EventArgs e)
         {
-            FormAparate formAparate = new FormAparate(aparate);
+            FormAparate formAparate = new FormAparate(aparate, rezervari);
             formAparate.ShowDialog();
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //deserializare aparate
-            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
-            using(FileStream streamAparate = File.OpenRead("aparate.xml"))
-            {
-                aparate = (List<Aparat>)serializerAparate.Deserialize(streamAparate);
-            }
-            //deserializare clienti
-            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
-            using (FileStream streamClienti = File.OpenRead("clienti.xml"))
-            {
-                clienti = (List<Client>)serializerClienti.Deserialize(streamClienti);
-            }
-            //deserializare rezervari
-            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
-            using (FileStream streamRezervari = File.OpenRead("rezervari.xml"))
-            {
-                rezervari = (List<Rezervare>)serializerRezervari.Deserialize(streamRezervari);
-            }
+            LoadAparate();
+            LoadClienti();
+            LoadRezervari();
         }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //serializare aparate
-            XmlSerializer serializerAparate = new XmlSerializer(typeof(List<Aparat>));
-            using (FileStream streamAparate = File.Create("aparate.xml"))
-            {
-                serializerAparate.Serialize(streamAparate, aparate);
-            }
-            //serializare clienti
-            XmlSerializer serializerClienti = new XmlSerializer(typeof(List<Client>));
-            using (FileStream streamClienti = File.Create("clienti.xml"))
-            {
-                serializerClienti.Serialize(streamClienti, clienti);
-            }
-            //serializare rezervari
-            XmlSerializer serializerRezervari = new XmlSerializer(typeof(List<Rezervare>));
-            using (FileStream streamRezervari = File.Create("rezervari.xml"))
-            {
-                serializerRezervari.Serialize(streamRezervari, rezervari);
-            }
-        }
-
         private void btnClienti_Click(object sender, EventArgs e)
         {
-            FormClienti formClienti = new FormClienti(clienti);
+            FormClienti formClienti = new FormClienti(clienti,rezervari);
             formClienti.ShowDialog();
         }
-
         private void MainForm_Activated(object sender, EventArgs e)
         {
             labelClienti.Text = "Clienti: " + clienti.Count;
             labelAparate.Text = "Aparate: " + aparate.Count;
             labelRezervari.Text = "Rezervari: " + rezervari.Count;
         }
-
         private void btnRezervari_Click(object sender, EventArgs e)
         {
             FormRezervari formRezervari = new FormRezervari(rezervari, aparate, clienti);
             formRezervari.ShowDialog();
         }
-
         private void aparateBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -102,16 +170,13 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format binar";
             if( saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName!= "")
             {
-                //binary aparate
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
                     formatter.Serialize(stream, aparate);
                 }
             }
-
         }
-
         private void clientiBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -119,7 +184,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format binar";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //binary clienti
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -127,7 +191,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void RezervariBin_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -135,7 +198,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format binar";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //binary rezervari
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -143,7 +205,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void aparateXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -151,7 +212,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml aparate
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Aparat>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -159,7 +219,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void clientiXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -167,7 +226,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml clienti
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Client>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -175,7 +233,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void rezervariXml_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -183,7 +240,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format XML";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //xml rezervari
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Rezervare>));
                 using (FileStream stream = File.Create(saveFileDialog.FileName))
                 {
@@ -191,7 +247,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void aparateCsv_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -199,7 +254,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date aparate in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv aparate
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Denumire");
@@ -210,7 +264,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void cleintiCSV_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -218,7 +271,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date clienti in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv clienti
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Nume, Prenume, Telefon, Data Nasterii, Nr. rezervari");
@@ -229,7 +281,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void rezervariCsv_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -237,7 +288,6 @@ namespace Proiect_PAW
             saveFileDialog.Title = "Salvare date rezervari in format CSV";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
             {
-                //csv rezervari
                 using (StreamWriter writer = File.CreateText(saveFileDialog.FileName))
                 {
                     writer.WriteLine("Id, Data, Durata, Client, Aparat 1, Aparat 2");
@@ -248,7 +298,6 @@ namespace Proiect_PAW
                 }
             }
         }
-
         private void btnAutentificare_Click(object sender, EventArgs e)
         {
             if((tbUtilizator.Text == "admin" && tbParola.Text == "admin") || (tbUtilizator.Text == "Bogdan" && tbParola.Text == "pass"))
@@ -267,7 +316,6 @@ namespace Proiect_PAW
                 tbParola.Clear();
             }
         }
-
         private void btn_Click(object sender, EventArgs e)
         {
             gbAutentificare.Visible = true;
@@ -275,5 +323,11 @@ namespace Proiect_PAW
             toolStrip.Enabled = false;
             gbUtilizator.Visible = false;
         }
+        private void btnStatistici_Click(object sender, EventArgs e)
+        {
+            FormStatistici formStatistici = new FormStatistici(aparate, clienti, rezervari);
+            formStatistici.ShowDialog();
+        }
+        #endregion
     }
 }

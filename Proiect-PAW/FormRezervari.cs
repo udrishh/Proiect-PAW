@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
 {
     public partial class FormRezervari : Form
     {
+        #region Atribute
         private List<Aparat> aparate = new List<Aparat>();
         private List<Client> clienti = new List<Client>();
         private List<Rezervare> rezervari = new List<Rezervare>();
+        private List<Aparat> aparate1;
+        private List<Aparat> aparate2;
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
 
-        List<Aparat> aparate1;
-        List<Aparat> aparate2;
+        #region Metode
         public FormRezervari(List<Rezervare> rezervari, List<Aparat> aparate, List<Client> clienti)
         {
             InitializeComponent();
@@ -36,10 +36,10 @@ namespace Proiect_PAW
             cbAparat1.SelectedIndex = -1;
             cbAparat2.DataSource = aparate2;
             cbAparat2.SelectedIndex = -1;
+
             DisplayRezervari();
         }
-
-        void DisplayRezervari()
+        private void DisplayRezervari()
         {
             rezervari.Sort();
             lvRezervari.Items.Clear();
@@ -58,6 +58,74 @@ namespace Proiect_PAW
                 lvRezervari.Items.Add(lvItem);
             }
         }
+        private void AddRezervare(Rezervare rezervare)
+        {
+            string query = "INSERT INTO Rezervari(Data, Durata, Client, Aparat1, Aparat2) VALUES(@data, @durata, @client, @aparat1, @aparat2); SELECT last_insert_rowid()";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@data", rezervare.Data.ToString("g"));
+                command.Parameters.AddWithValue("@durata", rezervare.Durata);
+                command.Parameters.AddWithValue("@client", rezervare.Client.Id);
+                command.Parameters.AddWithValue("@aparat1", rezervare.Aparat1.Id);
+                if(rezervare.Aparat2 != null)
+                {
+                    command.Parameters.AddWithValue("@aparat2", rezervare.Aparat2.Id);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@aparat2", 0);
+                }
+
+                connection.Open();
+                long id = (long)command.ExecuteScalar();
+                rezervare.Id = (int)id;
+
+                rezervari.Add(rezervare);
+            }
+
+            string query2 = "UPDATE Clienti SET NrRezervari=NrRezervari+1 WHERE Id=@id";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query2, connection);
+                command.Parameters.AddWithValue("@id", rezervare.Client.Id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        private void RemoveRezervare(Rezervare rezervare)
+        {
+            string query = "DELETE FROM Rezervari WHERE Id=@id";
+
+            using(SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", rezervare.Id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+
+                rezervari.Remove(rezervare);
+            }
+
+            rezervare.Client.NrRezervari--;
+            string query2 = "UPDATE Clienti SET NrRezervari=NrRezervari-1 WHERE Id=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query2, connection);
+                command.Parameters.AddWithValue("@id", rezervare.Client.Id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAdaugaRezervare_Click(object sender, EventArgs e)
         {
             Rezervare rezervare = new Rezervare();
@@ -131,41 +199,25 @@ namespace Proiect_PAW
                 rezervare.Aparat2 = (Aparat)cbAparat2.SelectedItem;
             }
 
-            //determinare id
-            rezervare.Id = 1;
-            foreach (Rezervare rezervareExistenta in rezervari)
-            {
-                if (rezervare.Id == rezervareExistenta.Id)
-                {
-                    rezervare.Id++;
-                }
-                else
-                {
-                    break;
-                }
-            }
-
             dtpData.ResetText();
             cbDurata.SelectedIndex = -1;
             cbClienti.SelectedIndex = -1;
             cbAparat1.SelectedIndex = -1;
             cbAparat2.SelectedIndex = -1;
 
-            rezervari.Add(rezervare);
+            AddRezervare(rezervare);
             DisplayRezervari();
             rezervare.Client.NrRezervari++;
         }
-
         private void btnNou_Click(object sender, EventArgs e)
         {
-            FormClienti formClienti = new FormClienti(clienti);
+            FormClienti formClienti = new FormClienti(clienti, rezervari);
             formClienti.ShowDialog();
 
             BindingList<Client> clientiComboBox = new BindingList<Client>(clienti);
             cbClienti.DataSource = clientiComboBox;
             cbClienti.SelectedIndex = -1;
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(lvRezervari.SelectedItems.Count == 0)
@@ -182,8 +234,7 @@ namespace Proiect_PAW
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                rezervari.Remove(rezervare);
-                rezervare.Client.NrRezervari--;
+                RemoveRezervare(rezervare);
                 DisplayRezervari();
             }
         }
@@ -207,6 +258,11 @@ namespace Proiect_PAW
                 {
                     index1 = i;
                 }
+                if(rezervare.Aparat2 == null)
+                {
+                    index2 = -1;
+                }
+                else
                 if (aparat.ToString() == rezervare.Aparat2.ToString())
                 {
                     index2 = i;
@@ -220,5 +276,10 @@ namespace Proiect_PAW
                 DisplayRezervari();
             }
         }
-    }
+        private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
+    } 
 }

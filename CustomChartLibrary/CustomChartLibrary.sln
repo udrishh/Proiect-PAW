@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proiect-PAW", "Proiect-PAW\Proiect-PAW.csproj", "{8CED096B-33E0-4ABD-B6F2-1AC97C2EF513}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomChartLibrary", "CustomChartLibrary\CustomChartLibrary\CustomChartLibrary.csproj", "{C63425F0-1909-42D2-9303-7E829C1850E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomChartLibrary", "CustomChartLibrary\CustomChartLibrary.csproj", "{C63425F0-1909-42D2-9303-7E829C1850E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8CED096B-33E0-4ABD-B6F2-1AC97C2EF513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CED096B-33E0-4ABD-B6F2-1AC97C2EF513}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CED096B-33E0-4ABD-B6F2-1AC97C2EF513}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CED096B-33E0-4ABD-B6F2-1AC97C2EF513}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C63425F0-1909-42D2-9303-7E829C1850E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C63425F0-1909-42D2-9303-7E829C1850E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C63425F0-1909-42D2-9303-7E829C1850E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {24786AAD-4FC5-4153-88BF-115E9DC6081F}
+		SolutionGuid = {563445B7-3296-469A-8414-AD30E8FD1658}
 	EndGlobalSection
 EndGlobal

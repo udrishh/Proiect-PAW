@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
@@ -16,11 +12,9 @@ namespace Proiect_PAW
         public Client Client { get; set; }
         public Aparat Aparat1 { get; set; }
         public Aparat Aparat2 { get; set; }
-
         #endregion
 
         #region Constructori
-
         public Rezervare(DateTime data, int durata, Aparat aparat1, Aparat aparat2, Client client, int id)
         {
             Data = data;
@@ -30,26 +24,21 @@ namespace Proiect_PAW
             Client = client;
             Id = id;
         }
-
         public Rezervare()
         {
 
         }
-
         #endregion
 
         #region Metode
-
         public override string ToString()
         {
             return "#"+Id;
         }
-
         public int CompareTo(Rezervare other)
         {
             return Id.CompareTo(other.Id);
         }
         #endregion
-
     }
 }

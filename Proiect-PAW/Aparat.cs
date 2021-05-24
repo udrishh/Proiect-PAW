@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_PAW
 {
@@ -21,7 +18,6 @@ namespace Proiect_PAW
             Denumire = denumire;
             Id = id;
         }
-
         public Aparat()
         {
         }
@@ -40,12 +36,10 @@ namespace Proiect_PAW
                 return Id + " - " + Denumire;
             }
         }
-
         public int CompareTo(Aparat other)
         {
             return this.Id.CompareTo(other.Id);
         }
-
         public bool IsAvailable(List<Rezervare> rezervari, DateTime dataInceput, int durata)
         {
             foreach(Rezervare rezervare in rezervari)
@@ -78,10 +72,8 @@ namespace Proiect_PAW
                     }
                 }
             }
-      
             return true;
         }
-
         #endregion
     }
 }

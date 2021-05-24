@@ -1,25 +1,26 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PAW
 {
     public partial class FormClienti : Form
     {
+        #region Atribute
         public List<Client> clienti;
-        public FormClienti(List<Client> clienti)
+        public List<Rezervare> rezervari;
+        private readonly string connectionString = "Data Source=database.db";
+        #endregion
+
+        #region Metode
+        public FormClienti(List<Client> clienti, List<Rezervare> rezervari)
         {
             InitializeComponent();
             this.clienti = clienti;
+            this.rezervari = rezervari;
             DisplayClienti();
         }
-
         void DisplayClienti()
         {
             clienti.Sort();
@@ -30,13 +31,77 @@ namespace Proiect_PAW
                 lvItem.SubItems.Add(client.Nume);
                 lvItem.SubItems.Add(client.Prenume);
                 lvItem.SubItems.Add(client.Telefon);
-                lvItem.SubItems.Add(client.DataNasterii.ToString("dd.MMMM.yyyy"));
+                lvItem.SubItems.Add(client.DataNasterii.ToString("d"));
                 lvItem.SubItems.Add(client.NrRezervari.ToString());
 
                 lvItem.Tag = client;
                 lvClienti.Items.Add(lvItem);
             }
         }
+        void AddClient(Client client)
+        {
+            string query = "INSERT INTO Clienti(Nume, Prenume, Telefon, DataNasterii, NrRezervari) VALUES(@nume, @prenume, @telefon, @dataNasterii, @nrRezervari); SELECT last_insert_rowid()";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@nume", client.Nume);
+                command.Parameters.AddWithValue("@prenume", client.Prenume);
+                command.Parameters.AddWithValue("@telefon", client.Telefon);
+                command.Parameters.AddWithValue("@dataNasterii", client.DataNasterii.ToString("d"));
+                command.Parameters.AddWithValue("@nrRezervari", client.NrRezervari);
+
+                connection.Open();
+                long id = (long)command.ExecuteScalar();
+                client.Id = (int)id;
+
+                clienti.Add(client);
+            }
+        }
+        void RemoveClient(Client client)
+        {
+            string query = "DELETE FROM Clienti WHERE Id=@id";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", client.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                clienti.Remove(client);
+            }
+        }
+        private void RemoveRezervare(Client client)
+        {
+            string query = "DELETE FROM Rezervari WHERE Client=@client";
+
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                SqliteCommand command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@client", client.Id);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                List<Rezervare> copieRezervari = new List<Rezervare>(rezervari);
+
+                foreach(Rezervare rezervare in copieRezervari)
+                {
+                    if(rezervare.Client == client)
+                    {
+                        rezervari.Remove(rezervare);
+                    }
+                }
+            }
+
+        }
+        #endregion
+
+        #region Evenimente
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
             Client client = new Client();
@@ -81,27 +146,14 @@ namespace Proiect_PAW
                 client.Telefon = tbTelefon.Text.Trim();
             }
             client.NrRezervari = 0;
-            //determinare id
-            client.Id = 1;
-            foreach (Client clientExistent in clienti)
-            {
-                if (client.Id == clientExistent.Id)
-                {
-                    client.Id++;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            clienti.Add(client);
+
+            AddClient(client);
             DisplayClienti();
             tbNume.Clear();
             tbPrenume.Clear();
             tbTelefon.Clear();
             dtpDataNasterii.ResetText();
         }
-
         private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvClienti.SelectedItems.Count == 0)
@@ -114,15 +166,15 @@ namespace Proiect_PAW
             Client client = (Client)lvItem.Tag;
 
             DialogResult result = MessageBox.Show("Sigur doriti sa stergeti clientul: " +
-                client.ToString() + " ?\nAceasta optiune este ireversibila!", "Stergere client",
+                client.ToString() + " ?\nStergand un client veti sterge si toate rezervarile efecutate de acesta.\nAceasta optiune este ireversibila!", "Stergere client",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                clienti.Remove(client);
+                RemoveClient(client);
+                RemoveRezervare(client);
                 DisplayClienti();
             }
         }
-
         private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lvClienti.SelectedItems.Count == 0)
@@ -140,5 +192,10 @@ namespace Proiect_PAW
                 DisplayClienti();
             }
         }
+        private void inapoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
     }
 }
