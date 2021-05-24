@@ -314,21 +314,6 @@ namespace Proiect_PAW
                     Brushes.Black,
                     new RectangleF(marginLeft + 50, marginTop + printAreaHight - 50, 1000, 1000)
                     );
-            e.HasMorePages = true;
-
-            e.Graphics.DrawString(
-                   "Grafic cu numarul de rezervari din fiecare zi pentru saptamana trecuta",
-                   new Font(FontFamily.GenericSerif, 20, FontStyle.Bold),
-                   Brushes.Black,
-                   new RectangleF(marginLeft + 50, marginTop + printAreaHight - 50, 1000, 1000)
-                   );
-
-            e.Graphics.DrawString(
-                   "Grafic cu numarul de rezervari din fiecare zi pentru saptamana viitoare",
-                   new Font(FontFamily.GenericSerif, 20, FontStyle.Bold),
-                   Brushes.Black,
-                   new RectangleF(marginLeft + 50, 5*marginTop + printAreaHight - 50, 1000, 1000)
-                   );
         }
 
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)

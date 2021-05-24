@@ -155,8 +155,9 @@ namespace Proiect_PAW
             // 
             // inapoiToolStripMenuItem
             // 
+            this.inapoiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inapoiToolStripMenuItem.Image")));
             this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
-            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.inapoiToolStripMenuItem.Text = "Inapoi";
             this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
             // 

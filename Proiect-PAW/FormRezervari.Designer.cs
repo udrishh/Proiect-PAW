@@ -67,6 +67,7 @@ namespace Proiect_PAW
             // 
             // lvRezervari
             // 
+            this.lvRezervari.BackColor = System.Drawing.SystemColors.Window;
             this.lvRezervari.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id,
             this.data,
@@ -141,6 +142,7 @@ namespace Proiect_PAW
             // 
             // btnAdaugaRezervare
             // 
+            this.btnAdaugaRezervare.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAdaugaRezervare.Location = new System.Drawing.Point(434, 81);
             this.btnAdaugaRezervare.Name = "btnAdaugaRezervare";
             this.btnAdaugaRezervare.Size = new System.Drawing.Size(110, 23);
@@ -173,6 +175,7 @@ namespace Proiect_PAW
             // cbClienti
             // 
             this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClienti.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbClienti.FormattingEnabled = true;
             this.cbClienti.Location = new System.Drawing.Point(75, 71);
             this.cbClienti.Name = "cbClienti";
@@ -182,6 +185,7 @@ namespace Proiect_PAW
             // cbAparat2
             // 
             this.cbAparat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAparat2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat2.FormattingEnabled = true;
             this.cbAparat2.Location = new System.Drawing.Point(358, 48);
             this.cbAparat2.Name = "cbAparat2";
@@ -200,6 +204,7 @@ namespace Proiect_PAW
             // cbAparat1
             // 
             this.cbAparat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAparat1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat1.FormattingEnabled = true;
             this.cbAparat1.Location = new System.Drawing.Point(358, 21);
             this.cbAparat1.Name = "cbAparat1";
@@ -217,6 +222,7 @@ namespace Proiect_PAW
             // 
             // btnNou
             // 
+            this.btnNou.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnNou.Location = new System.Drawing.Point(252, 71);
             this.btnNou.Name = "btnNou";
             this.btnNou.Size = new System.Drawing.Size(35, 21);
@@ -228,6 +234,7 @@ namespace Proiect_PAW
             // cbDurata
             // 
             this.cbDurata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDurata.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbDurata.FormattingEnabled = true;
             this.cbDurata.Items.AddRange(new object[] {
             "1",
@@ -251,6 +258,7 @@ namespace Proiect_PAW
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Location = new System.Drawing.Point(6, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
@@ -260,6 +268,7 @@ namespace Proiect_PAW
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Location = new System.Drawing.Point(6, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
@@ -269,6 +278,7 @@ namespace Proiect_PAW
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Location = new System.Drawing.Point(6, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
@@ -281,6 +291,7 @@ namespace Proiect_PAW
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inapoiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -291,8 +302,9 @@ namespace Proiect_PAW
             // 
             // inapoiToolStripMenuItem
             // 
+            this.inapoiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inapoiToolStripMenuItem.Image")));
             this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
-            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.inapoiToolStripMenuItem.Text = "Inapoi";
             this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
             // 
@@ -300,18 +312,22 @@ namespace Proiect_PAW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(804, 531);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvRezervari);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormRezervari";
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manager rezervari";
+            this.TransparencyKey = System.Drawing.Color.Turquoise;
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

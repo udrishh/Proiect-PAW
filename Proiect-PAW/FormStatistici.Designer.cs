@@ -64,8 +64,9 @@ namespace Proiect_PAW
             // 
             // inapoiToolStripMenuItem
             // 
+            this.inapoiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inapoiToolStripMenuItem.Image")));
             this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
-            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.inapoiToolStripMenuItem.Text = "Inapoi";
             this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
             // 
@@ -75,8 +76,10 @@ namespace Proiect_PAW
             this.printToolStripMenuItem1,
             this.printPreviewToolStripMenuItem,
             this.printSetupToolStripMenuItem});
+            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
+            this.printToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.printToolStripMenuItem.Text = "File";
             // 
             // printToolStripMenuItem1
@@ -122,6 +125,7 @@ namespace Proiect_PAW
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Location = new System.Drawing.Point(12, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 13);
@@ -131,6 +135,7 @@ namespace Proiect_PAW
             // cbInterval
             // 
             this.cbInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInterval.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbInterval.FormattingEnabled = true;
             this.cbInterval.Items.AddRange(new object[] {
             "Ultima saptamana",
@@ -143,6 +148,7 @@ namespace Proiect_PAW
             // 
             // btnArataStatistici
             // 
+            this.btnArataStatistici.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnArataStatistici.Location = new System.Drawing.Point(406, 34);
             this.btnArataStatistici.Name = "btnArataStatistici";
             this.btnArataStatistici.Size = new System.Drawing.Size(138, 21);
@@ -154,6 +160,7 @@ namespace Proiect_PAW
             // label
             // 
             this.label.AutoSize = true;
+            this.label.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label.Location = new System.Drawing.Point(9, 603);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(161, 13);
@@ -187,6 +194,7 @@ namespace Proiect_PAW
             // 
             // btnCopy
             // 
+            this.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCopy.Location = new System.Drawing.Point(763, 600);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(137, 21);

@@ -88,9 +88,11 @@ namespace Proiect_PAW
             // 
             // btnStatistici
             // 
-            this.btnStatistici.Location = new System.Drawing.Point(17, 176);
+            this.btnStatistici.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistici.Image")));
+            this.btnStatistici.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistici.Location = new System.Drawing.Point(17, 165);
             this.btnStatistici.Name = "btnStatistici";
-            this.btnStatistici.Size = new System.Drawing.Size(157, 23);
+            this.btnStatistici.Size = new System.Drawing.Size(157, 40);
             this.btnStatistici.TabIndex = 3;
             this.btnStatistici.Text = "&Statistici";
             this.btnStatistici.UseVisualStyleBackColor = true;
@@ -98,9 +100,11 @@ namespace Proiect_PAW
             // 
             // btnAparate
             // 
-            this.btnAparate.Location = new System.Drawing.Point(17, 59);
+            this.btnAparate.Image = ((System.Drawing.Image)(resources.GetObject("btnAparate.Image")));
+            this.btnAparate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAparate.Location = new System.Drawing.Point(17, 65);
             this.btnAparate.Name = "btnAparate";
-            this.btnAparate.Size = new System.Drawing.Size(157, 23);
+            this.btnAparate.Size = new System.Drawing.Size(157, 40);
             this.btnAparate.TabIndex = 2;
             this.btnAparate.Text = "&Aparate";
             this.btnAparate.UseVisualStyleBackColor = true;
@@ -108,9 +112,11 @@ namespace Proiect_PAW
             // 
             // btnRezervari
             // 
-            this.btnRezervari.Location = new System.Drawing.Point(17, 88);
+            this.btnRezervari.Image = ((System.Drawing.Image)(resources.GetObject("btnRezervari.Image")));
+            this.btnRezervari.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRezervari.Location = new System.Drawing.Point(17, 111);
             this.btnRezervari.Name = "btnRezervari";
-            this.btnRezervari.Size = new System.Drawing.Size(157, 23);
+            this.btnRezervari.Size = new System.Drawing.Size(157, 40);
             this.btnRezervari.TabIndex = 1;
             this.btnRezervari.Text = "&Rezervari";
             this.btnRezervari.UseVisualStyleBackColor = true;
@@ -118,9 +124,11 @@ namespace Proiect_PAW
             // 
             // btnClienti
             // 
-            this.btnClienti.Location = new System.Drawing.Point(17, 30);
+            this.btnClienti.Image = ((System.Drawing.Image)(resources.GetObject("btnClienti.Image")));
+            this.btnClienti.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClienti.Location = new System.Drawing.Point(17, 19);
             this.btnClienti.Name = "btnClienti";
-            this.btnClienti.Size = new System.Drawing.Size(157, 23);
+            this.btnClienti.Size = new System.Drawing.Size(157, 40);
             this.btnClienti.TabIndex = 0;
             this.btnClienti.Text = "&Clienti";
             this.btnClienti.UseVisualStyleBackColor = true;
@@ -265,21 +273,21 @@ namespace Proiect_PAW
             // aparateXml
             // 
             this.aparateXml.Name = "aparateXml";
-            this.aparateXml.Size = new System.Drawing.Size(121, 22);
+            this.aparateXml.Size = new System.Drawing.Size(180, 22);
             this.aparateXml.Text = "Aparate";
             this.aparateXml.Click += new System.EventHandler(this.aparateXml_Click);
             // 
             // clientiXml
             // 
             this.clientiXml.Name = "clientiXml";
-            this.clientiXml.Size = new System.Drawing.Size(121, 22);
+            this.clientiXml.Size = new System.Drawing.Size(180, 22);
             this.clientiXml.Text = "Clienti";
             this.clientiXml.Click += new System.EventHandler(this.clientiXml_Click);
             // 
             // rezervariXml
             // 
             this.rezervariXml.Name = "rezervariXml";
-            this.rezervariXml.Size = new System.Drawing.Size(121, 22);
+            this.rezervariXml.Size = new System.Drawing.Size(180, 22);
             this.rezervariXml.Text = "Rezervari";
             this.rezervariXml.Click += new System.EventHandler(this.rezervariXml_Click);
             // 
@@ -300,6 +308,7 @@ namespace Proiect_PAW
             // 
             // btnAutentificare
             // 
+            this.btnAutentificare.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAutentificare.Location = new System.Drawing.Point(73, 176);
             this.btnAutentificare.Name = "btnAutentificare";
             this.btnAutentificare.Size = new System.Drawing.Size(75, 23);
@@ -378,6 +387,7 @@ namespace Proiect_PAW
             // 
             // btn
             // 
+            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn.Location = new System.Drawing.Point(76, 162);
             this.btn.Name = "btn";
             this.btn.Size = new System.Drawing.Size(75, 23);

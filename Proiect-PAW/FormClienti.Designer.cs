@@ -136,6 +136,7 @@ namespace Proiect_PAW
             // 
             // btnAdaugaClient
             // 
+            this.btnAdaugaClient.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAdaugaClient.Location = new System.Drawing.Point(425, 81);
             this.btnAdaugaClient.Name = "btnAdaugaClient";
             this.btnAdaugaClient.Size = new System.Drawing.Size(119, 23);
@@ -172,6 +173,7 @@ namespace Proiect_PAW
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Location = new System.Drawing.Point(295, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
@@ -204,6 +206,7 @@ namespace Proiect_PAW
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Location = new System.Drawing.Point(295, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
@@ -213,6 +216,7 @@ namespace Proiect_PAW
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Location = new System.Drawing.Point(15, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
@@ -222,6 +226,7 @@ namespace Proiect_PAW
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Location = new System.Drawing.Point(15, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
@@ -244,8 +249,9 @@ namespace Proiect_PAW
             // 
             // inapoiToolStripMenuItem
             // 
+            this.inapoiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inapoiToolStripMenuItem.Image")));
             this.inapoiToolStripMenuItem.Name = "inapoiToolStripMenuItem";
-            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.inapoiToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.inapoiToolStripMenuItem.Text = "Inapoi";
             this.inapoiToolStripMenuItem.Click += new System.EventHandler(this.inapoiToolStripMenuItem_Click);
             // 
