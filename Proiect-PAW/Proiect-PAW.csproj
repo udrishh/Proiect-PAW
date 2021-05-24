@@ -180,7 +180,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CustomChartLibrary\CustomChartLibrary\CustomChartLibrary.csproj">
+    <ProjectReference Include="..\CustomChartLibrary\CustomChartLibrary\CustomChartLibrary.csproj">
       <Project>{c63425f0-1909-42d2-9303-7e829c1850e5}</Project>
       <Name>CustomChartLibrary</Name>
     </ProjectReference>
