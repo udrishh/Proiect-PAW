@@ -125,7 +125,7 @@ namespace Proiect_PAW
                 errorProvider.SetError(tbPrenume, null);
                 client.Prenume = tbPrenume.Text.Trim();
             }
-            if(dtpDataNasterii.Value >= DateTime.Now)
+            if(dtpDataNasterii.Value >= DateTime.Now.AddYears(-1))
             {
                 errorProvider.SetError(dtpDataNasterii, "Data nasterii este invalida!");
                 return;

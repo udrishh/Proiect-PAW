@@ -143,7 +143,7 @@ namespace Proiect_PAW
             // btnAdaugaRezervare
             // 
             this.btnAdaugaRezervare.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAdaugaRezervare.Location = new System.Drawing.Point(434, 81);
+            this.btnAdaugaRezervare.Location = new System.Drawing.Point(442, 81);
             this.btnAdaugaRezervare.Name = "btnAdaugaRezervare";
             this.btnAdaugaRezervare.Size = new System.Drawing.Size(110, 23);
             this.btnAdaugaRezervare.TabIndex = 1;
@@ -165,9 +165,9 @@ namespace Proiect_PAW
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnAdaugaRezervare);
-            this.groupBox1.Location = new System.Drawing.Point(128, 409);
+            this.groupBox1.Location = new System.Drawing.Point(112, 409);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 110);
+            this.groupBox1.Size = new System.Drawing.Size(577, 110);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adauga rezervare noua";
@@ -177,7 +177,7 @@ namespace Proiect_PAW
             this.cbClienti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbClienti.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbClienti.FormattingEnabled = true;
-            this.cbClienti.Location = new System.Drawing.Point(75, 71);
+            this.cbClienti.Location = new System.Drawing.Point(96, 71);
             this.cbClienti.Name = "cbClienti";
             this.cbClienti.Size = new System.Drawing.Size(171, 21);
             this.cbClienti.TabIndex = 13;
@@ -187,7 +187,7 @@ namespace Proiect_PAW
             this.cbAparat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAparat2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat2.FormattingEnabled = true;
-            this.cbAparat2.Location = new System.Drawing.Point(358, 48);
+            this.cbAparat2.Location = new System.Drawing.Point(366, 48);
             this.cbAparat2.Name = "cbAparat2";
             this.cbAparat2.Size = new System.Drawing.Size(186, 21);
             this.cbAparat2.TabIndex = 12;
@@ -195,7 +195,7 @@ namespace Proiect_PAW
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(305, 51);
+            this.label5.Location = new System.Drawing.Point(313, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 11;
@@ -206,7 +206,7 @@ namespace Proiect_PAW
             this.cbAparat1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAparat1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbAparat1.FormattingEnabled = true;
-            this.cbAparat1.Location = new System.Drawing.Point(358, 21);
+            this.cbAparat1.Location = new System.Drawing.Point(366, 21);
             this.cbAparat1.Name = "cbAparat1";
             this.cbAparat1.Size = new System.Drawing.Size(186, 21);
             this.cbAparat1.TabIndex = 10;
@@ -214,7 +214,7 @@ namespace Proiect_PAW
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(305, 24);
+            this.label4.Location = new System.Drawing.Point(313, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 9;
@@ -223,7 +223,7 @@ namespace Proiect_PAW
             // btnNou
             // 
             this.btnNou.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnNou.Location = new System.Drawing.Point(252, 71);
+            this.btnNou.Location = new System.Drawing.Point(273, 71);
             this.btnNou.Name = "btnNou";
             this.btnNou.Size = new System.Drawing.Size(35, 21);
             this.btnNou.TabIndex = 8;
@@ -241,7 +241,7 @@ namespace Proiect_PAW
             "2",
             "3",
             "4"});
-            this.cbDurata.Location = new System.Drawing.Point(75, 45);
+            this.cbDurata.Location = new System.Drawing.Point(96, 45);
             this.cbDurata.Name = "cbDurata";
             this.cbDurata.Size = new System.Drawing.Size(170, 21);
             this.cbDurata.TabIndex = 7;
@@ -250,7 +250,7 @@ namespace Proiect_PAW
             // 
             this.dtpData.CustomFormat = "dd.MM.yyyy  -  HH:mm";
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpData.Location = new System.Drawing.Point(45, 20);
+            this.dtpData.Location = new System.Drawing.Point(66, 20);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(200, 20);
             this.dtpData.TabIndex = 6;
@@ -259,7 +259,7 @@ namespace Proiect_PAW
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(6, 48);
+            this.label3.Location = new System.Drawing.Point(27, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 5;
@@ -269,7 +269,7 @@ namespace Proiect_PAW
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(6, 26);
+            this.label2.Location = new System.Drawing.Point(27, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 4;
@@ -279,7 +279,7 @@ namespace Proiect_PAW
             // 
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(6, 74);
+            this.label1.Location = new System.Drawing.Point(27, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 2;
