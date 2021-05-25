@@ -92,7 +92,7 @@ namespace Proiect_PAW
         }
         private void dtpDataNasterii_Validating(object sender, CancelEventArgs e)
         {
-            if (dtpDataNasterii.Value >= DateTime.Now)
+            if (dtpDataNasterii.Value >= DateTime.Now.AddYears(-1))
             {
                 errorProvider.SetError(dtpDataNasterii, "Data nasterii este invalida!");
                 e.Cancel = true;

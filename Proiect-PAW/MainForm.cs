@@ -116,7 +116,7 @@ namespace Proiect_PAW
                         {
                             foreach (Aparat aparatAux in aparate)
                             {
-                                if (aparatAux.Id == idAparat1)
+                                if (aparatAux.Id == idAparat2)
                                 {
                                     aparat2 = aparatAux;
                                 }
