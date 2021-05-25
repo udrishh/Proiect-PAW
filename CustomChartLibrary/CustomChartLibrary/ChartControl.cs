@@ -10,8 +10,6 @@ namespace CustomChartLibrary
     {
         #region Atribute
         public ChartValue[] Data { get; set; }
-        public List<DateTime> zile = new List<DateTime>();
-        public List<int> nrRezervari = new List<int>();
         #endregion
 
         #region Metode
@@ -29,8 +27,21 @@ namespace CustomChartLibrary
 
             Graphics graphics = pe.Graphics;
             Rectangle rectangle = pe.ClipRectangle;
-            
-            if(Data!=null)
+
+            bool hasReservations = false;
+
+            if(Data != null)
+            {
+                for (int i = 0; i < Data.Length; i++)
+                {
+                    if (Data[i].Value > 0)
+                    {
+                        hasReservations = true;
+                    }
+                }
+            }
+
+            if(Data != null && hasReservations)
             {
                 var maxDotWidth = rectangle.Width / Data.Length;
                 var maxDotHeight = rectangle.Height * 0.9;
